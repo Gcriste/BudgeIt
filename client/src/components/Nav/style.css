@@ -1,0 +1,13 @@
+
+.navbar{
+    color:black;
+    font-family: 'Fira Sans', sans-serif;
+    background:#AFEEEE;
+    border-bottom:10px solid grey;
+    margin-bottom:10px;
+  background:white;
+}
+
+/* .navbar-nav{
+    text-align:center;
+} */
