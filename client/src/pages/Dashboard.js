@@ -10,15 +10,11 @@ import Moment from 'react-moment';
 
 
 
-class Saved extends Component {
+class Dashboard extends Component {
   state = {
-      savedGigs:[],
       userid:"",
-      savedRequests:[],
-      gigid:"",
       user:{},
-      dateForSavedRequests:[],
-      // activeTab: props.activeTab || 1
+   
 
   };
 
@@ -33,8 +29,6 @@ class Saved extends Component {
 
   componentDidMount() {
 
-   
-    
 
     const token = localStorage.getItem('example-app');
     if(token){
@@ -112,4 +106,4 @@ class Saved extends Component {
 
 
 
-export default Saved;
+export default Dashboard;
