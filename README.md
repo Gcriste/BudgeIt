@@ -1,5 +1,3 @@
-# BudgeIt
-Budgetting App created in React
+# react template
 
-
-### Still in Progress
+### make sure to change heroku and mlab username and password
