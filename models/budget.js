@@ -3,12 +3,13 @@ const Schema = mongoose.Schema;
 
 const budgetSchema = new Schema({
     user:{
-        type: mongooseSchema.Types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:'user'
     },
-    category: {
+
+    category: [{
         food: {
-            type:Number
+            type:String
         },
         transportation: {
             type:Number
@@ -29,12 +30,14 @@ const budgetSchema = new Schema({
             type:Number
         },
     
-  },
+    }],
 
   limit:{type:Number},
   userid: {type: String},
+},
+  { timestamps: {} }
   
-});
+);
 
 const Budget = mongoose.model("Budget", budgetSchema);
 

@@ -54,8 +54,8 @@ export default {
 
 
   // Saves budgets to the database
-  saveBudget: function() {
-    return axios.post("/api/budgets");
+  saveBudget: function(savedBudgets) {
+    return axios.post("/api/budgets", savedBudgets);
   },
 
   //post Transaction

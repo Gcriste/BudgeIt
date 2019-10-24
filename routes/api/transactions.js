@@ -10,8 +10,8 @@ router.route("/")
   router.route("/:userid")
   .get(transactionsController.findById);
 
-// Matches with "/api/transactions/gigs/:gigid"
-router.route("/:gigid")
+// Matches with "/api/transactions/:budgetid"
+router.route("/:budgetid")
   .get(transactionsController.find)
   .put(transactionsController.update);
   
