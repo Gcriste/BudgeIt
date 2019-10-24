@@ -13,20 +13,6 @@ export default {
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
   },
-  // Saves a gig to the database
-  // saveUser:function (savedUsers) {
-
-  //  return axios.post("/api/users/login", savedUsers)
-  //   .then(response => {
-  //     console.log(response.data)
-  //   })
-  //   .catch(err=> {
-  //     this.setState({
-  //       errors:err.response.data
-  //     })
-  //   })
-  
-// },
   saveUser: function(savedUsers) {
     console.log(savedUsers)
     return axios.post("/api/users", savedUsers)
@@ -47,43 +33,55 @@ export default {
     return axios.get("/api/users/test")
   },
 
-  // getGigs: function() {
-  //   return axios.get("/api/gigs");
-  // },
+  //gets all budgets
+  getBudgets: function() {
+    return axios.get("/api/budgets");
+  },
 
-  // getSavedGigs:function(userId){
-  //   return axios.get("/api/gigs/" + userId);
-  // },
-  // // Gets the book with the given id
-  // getGig: function(id) {
-  //   return axios.get("/api/gigs/?_id=" + id);
-  // },
-  // // Deletes the book with the given id
-  // deleteGig: function(id) {
-  //   return axios.delete("/api/gigs/" + id);
-  // },
-  // // Saves a gig to the database
-  // saveGig: function(savedGigs) {
-  //   return axios.post("/api/gigs", savedGigs);
-  // },
 
-  // postRequest: function(savedRequest){
-  //   return axios.post("/api/requests", savedRequest)
-  // },
+  //gets budgets by userId
+  getBudgetByUser:function(userId){
+    return axios.get("/api/budgets/" + userId);
+  },
+  // Gets the budget by budgetId
+  getBudgetById: function(id) {
+    return axios.get("/api/budgets/?_id=" + id);
+  },
+  // Deletes the budget with the given id
+  deleteGig: function(id) {
+    return axios.delete("/api/budgets/" + id);
+  },
 
-  // getRequests:function(){
-  //   return axios.get("/api/requests");
-  // },
 
-  // getRequestByGig:function(gigId){
-  //   return axios.get("/api/requests/?gigid=" + gigId)
-  // },
-  // getRequestByUser:function(userId){
-  //   return axios.get("/api/requests/" + userId)
-  // },
-  // deleteRequest:function(id){
-  //   return axios.delete("/api/requests/" + id)
-  // }
+  // Saves budgets to the database
+  saveBudget: function() {
+    return axios.post("/api/budgets");
+  },
+
+  //post Transaction
+  postTransaction: function(savedTransaction){
+    return axios.post("/api/transactions", savedTransaction)
+  },
+
+  //get all transactions
+  getTransactions:function(){
+    return axios.get("/api/transactions");
+  },
+
+  //get transaction by budgetId
+  getTransactionByBudget:function(budgetId){
+    return axios.get("/api/transactions/?budgetid=" + budgetId)
+  },
+
+  //get transactions by userId
+  getTransactionByUser:function(userId){
+    return axios.get("/api/transactions/" + userId)
+  },
+
+  //delete transaction
+  deleteTransaction:function(id){
+    return axios.delete("/api/transactions/" + id)
+  }
   
 
 };

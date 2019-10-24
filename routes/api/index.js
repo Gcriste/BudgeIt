@@ -1,12 +1,12 @@
 const router = require("express").Router();
-// const gigRoutes = require("./gigs");
+const budgetRoutes = require("./budgets");
 const userRoutes = require("./users");
+const transactionRoutes = require("./transactions");
 
-
-// // gig routes
-// router.use("/gigs", gigRoutes);
+// routes
+router.use("/budgets", budgetRoutes);
 router.use("/users", userRoutes);
-// router.use("/requests", requestRoutes);
+router.use("/transactions", transactionRoutes);
 
 module.exports = router;
  
