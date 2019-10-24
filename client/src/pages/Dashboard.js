@@ -37,7 +37,6 @@ class Dashboard extends Component {
     
    API.getUsers()
    .then(response => {
-     let userId = response.data._id
      
       this.setState({
         user:response.data,

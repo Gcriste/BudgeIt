@@ -23,11 +23,26 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+
     db.Budget
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+//   create: function(req, res) {
+//     db.User
+//     .findOne(req.body.email)
+//     .then(() => {
+//         db.Budget
+//       const  newBudget = {
+//           category,
+//           userid:req.user.id
+//       }
+//         .create(newBudget)
+//         .then(dbModel => res.json(dbModel))
+//     })
+//       .catch(err => res.status(422).json(err));
+//   },
   update: function(req, res) {
     db.Budget
       .findOneAndUpdate({ _id: req.params.id }, req.body)
