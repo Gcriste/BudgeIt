@@ -29,7 +29,8 @@ class CurrentBudget extends Component {
             errors:{},
             lastname:"",
             email:"",
-            password:""
+            password:"",
+            firstname:""
         }
       }
 
@@ -87,7 +88,8 @@ class CurrentBudget extends Component {
     }
     //  axios
     //  .post('api/users', newBudget)
-    API.updateUser(newBudget)
+    // API.updateUser(newBudget)
+    axios.put('api/users/:id', newBudget)
     .then(this.setState({
         redirect:true,
       })
