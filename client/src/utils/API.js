@@ -29,6 +29,9 @@ export default {
     return axios.post("/api/users/login");
   },
 
+  updateUser: function(id){
+    return axios.put("/api/users/?_id="+ id)
+  },
   test:function(){
     return axios.get("/api/users/test")
   },
@@ -45,7 +48,7 @@ export default {
   },
   // Gets the budget by budgetId
   getBudgetById: function(id) {
-    return axios.get("/api/budgets/?_id=" + id);
+    return axios.get("/api/budgets/?_id==" + id);
   },
   // Deletes the budget with the given id
   deleteGig: function(id) {

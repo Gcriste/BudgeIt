@@ -28,7 +28,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    const {email, password, firstname, lastname} = req.body;
+    const {email, password, firstname, lastname, currentbudget} = req.body;
     db.User
     .findOne({email})
     .then((user) => {
@@ -39,7 +39,8 @@ module.exports = {
           firstname,
           lastname,
           email,
-          password
+          password,
+          currentbudget
         };
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -65,18 +66,20 @@ module.exports = {
   update: function(req, res) {
     console.log(req.user)
     db.User
-      .update({_id:req.user.id}, {
+      .findOneAndUpdate({_id:req.params.id}, {
         firstname:req.body.firstname,
         lastname:req.body.lastname,
-        email:req.body.email
+        email:req.body.email,
+        currentbudget:req.body.currentbudget
       })
       .then(()=>{
-        db.User.findOne({_id:req.user.id})
+        db.User.findOne({_id:req.params.id})
         .then(user =>{
           res.status(200).json({
             firstname:user.firstname,
             lastname:user.lastname,
             email:user.email,
+            currentbudget:user.currentbudget,
             message:"user account successfully updated",
             userUpdated:true
           })
@@ -113,7 +116,8 @@ module.exports = {
               id:user._id,
               email:user.email,
               firstname:user.firstname,
-              lastname:user.lastname
+              lastname:user.lastname,
+              currentbudget:user.currentbudget
             }
             jwt.sign(
               payload,

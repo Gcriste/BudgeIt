@@ -1,23 +1,37 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import setAuthToken from "../utils/setAuthToken";
 import {Redirect } from "react-router-dom";
-import Moment from 'react-moment';
+import authenticate from '../utils/Authenticate';
+import setAuthToken from '../utils/setAuthToken';
 import Dash from '../components/Dashboard';
+import Moment from 'react-moment'
+import {Current , PostButton } from '../components/CurrentBudget';
 
 
 
+class CurrentBudget extends Component {
+  
 
-
-class Dashboard extends Component {
-  state = {
-      userid:"",
-      user:{},
-   
-
-  };
+    // state = {
+    //     user:{},
+    //     userid:"",
+    //     currentbudget:""
+    // }
+    constructor(){
+        super();
+        this.state = {
+          redirect:false,
+            currentbudget:"",
+            user:{},
+            userid:"",
+            errors:{},
+            lastname:"",
+            email:"",
+            password:""
+        }
+      }
 
 
    handleLogout = () => {
@@ -41,13 +55,51 @@ class Dashboard extends Component {
      
       this.setState({
         user:response.data,
-          userid:response.data._id
+          userid:response.data._id,
+          firstname:response.data.firstname,
+          lastname:response.data.lastname,
+          email:response.data.email,
+          password:response.data.password
       })
 
    
     })
 
   }
+
+  handleCurrentBudgetChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+ 
+  handleCurrentBudgetSubmit = event => {
+    event.preventDefault();
+    console.log("hi")
+  
+    const newBudget = {
+     currentbudget:this.state.currentbudget,
+     firstname:this.state.firstname,
+     lastname:this.state.lastname,
+     email:this.state.email,
+     password:this.state.password
+    }
+    //  axios
+    //  .post('api/users', newBudget)
+    API.updateUser(newBudget)
+    .then(this.setState({
+        redirect:true,
+      })
+    
+    )
+    .catch(err => {
+      this.setState({
+        errors:err.response.data
+      })
+    });
+   }
+
 
 
   render() {
@@ -57,7 +109,7 @@ class Dashboard extends Component {
     const {redirect, user} = this.state;
 
     if(redirect){
-        return <Redirect to="/" />
+        return <Redirect to="/dashboard" />
     }
   
       return (
@@ -68,6 +120,14 @@ class Dashboard extends Component {
         <div className = "profile-container">
          
   <div className = "profile">
+
+                <Current
+                value={this.state.currentbudget}
+                type="name"
+                onChange={this.handleCurrentBudgetChange}
+                name="currentbudget"
+                placeholder="Enter Your Monthly Income"
+              />
                    <div className = "row">
                      <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
@@ -97,6 +157,10 @@ class Dashboard extends Component {
                 </div>
 
               </div>
+              <PostButton 
+                handleCurrentBudgetSubmit={this.handleCurrentBudgetSubmit}
+              >
+              </PostButton>
 
                      </Container>
        
@@ -106,4 +170,4 @@ class Dashboard extends Component {
 
 
 
-export default Dashboard;
+export default CurrentBudget;

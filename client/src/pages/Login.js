@@ -81,7 +81,7 @@ class Login extends Component {
       const {errors, redirect} = this.state;
 
       if (redirect)  {
-        return <Redirect to="/dashboard"/>
+        return <Redirect to="/currentbudget"/>
       }
 
         return (

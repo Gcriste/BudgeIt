@@ -17,7 +17,7 @@ module.exports = {
   },
   find: function(req, res) {
     db.Transaction
-      .find({budgetid:req.params.budgetid})
+      .find({gigid:req.params.gigid})
       .then(dbModel => {
           console.log(dbModel)
           res.json(dbModel)

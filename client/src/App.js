@@ -7,6 +7,7 @@ import CreateAccount from "./pages/CreateAccount";
 import PrivateRoute from "./utils/PrivateRoute";
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
+import CurrentBudget from './pages/CurrentBudget';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/createaccount" component={CreateAccount} /> 
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/currentbudget" component={CurrentBudget} />
           <PrivateRoute exact path="/dashboard/:id" component={Dashboard} />
           <Route exact path = "/login" component = {Login}/>
           <Route exact path = "/" component= {Login}/>
