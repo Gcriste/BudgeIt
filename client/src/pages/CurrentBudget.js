@@ -79,27 +79,37 @@ class CurrentBudget extends Component {
     event.preventDefault();
     console.log("hi")
   
-    const newBudget = {
-     currentbudget:this.state.currentbudget,
-     firstname:this.state.firstname,
-     lastname:this.state.lastname,
-     email:this.state.email,
-     password:this.state.password
-    }
-    //  axios
-    //  .post('api/users', newBudget)
-    // API.updateUser(newBudget)
-    axios.put('api/users/:id', newBudget)
-    .then(this.setState({
-        redirect:true,
-      })
+  
+    API.getUsers()
+    .then(response => {
+        const newBudget = {
+            currentbudget:this.state.currentbudget,
+       
+           }
+       this.setState({
+         user:response.data,
+           userid:response.data._id,
+           firstname:response.data.firstname,
+           lastname:response.data.lastname,
+           email:response.data.email,
+           password:response.data.password
+       })
+       axios.put('/api/users/' + response.data._id, newBudget)
+       .then(this.setState({
+           currentbudget:this.state.currentbudget,
+           redirect:true,
+         })
+       
+       )
     
-    )
+    
+  
     .catch(err => {
       this.setState({
         errors:err.response.data
       })
     });
+    })
    }
 
 

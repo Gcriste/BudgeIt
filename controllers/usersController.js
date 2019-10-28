@@ -66,12 +66,7 @@ module.exports = {
   update: function(req, res) {
     console.log(req.user)
     db.User
-      .findOneAndUpdate({_id:req.params.id}, {
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        email:req.body.email,
-        currentbudget:req.body.currentbudget
-      })
+      .findOneAndUpdate({_id:req.params.id}, {$set:req.body})
       .then(()=>{
         db.User.findOne({_id:req.params.id})
         .then(user =>{

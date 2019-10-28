@@ -71,7 +71,7 @@ class CreateAccount extends Component {
       const {errors, redirect} = this.state;
 
             if (redirect)  {
-              return <Redirect to="/search"/>
+              return <Redirect to="/currentbudget"/>
             }
         return (
 
