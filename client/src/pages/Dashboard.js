@@ -55,23 +55,10 @@ class Dashboard extends Component {
 
     API.getBudgetByUser(userId)
   .then(response => {
-    let results = response.data[0].budgets;
-    results = results = results.map(result => {
-      result = {
-        id: result.id,
-        food: result.food,
-        transportation: result.transportation,
-        lifestyle: result.lifestyle,
-        housing: result.housing,
-        debt: result.debt,
-        insurance:result.insurance,
-        savings:result.savings,
-    }
-    return result;
-})
-    console.log(results)
+  
+  console.log(response.data)
     this.setState({
-      budgets:results,
+      budgets:response.data,
       food:response.data[0].budgets[0].food,
       transportation:response.data[0].budgets[1].transportation,
       lifestyle:response.data[0].budgets[2].lifestyle,

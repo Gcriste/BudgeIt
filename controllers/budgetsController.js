@@ -53,19 +53,8 @@ module.exports = {
 //       .catch(err => res.status(422).json(err));
 //   },
   update: function(req, res) {
-  
-    // const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
-    // const budgets = {};
-    //   budgets.food = food;
-    //   budgets.transportation = transportation;
-    //   budgets.lifestyle = lifestyle;
-    //   budgets.housing = housing;
-    //   budgets.debt = debt;
-    //   budgets.insurance = insurance;
-    //   budgets.savings = savings;
-    //   budgets.userid = userid
       db.Budget
-      .findOneAndUpdate({userid: req.params.userid },  {$set:req.body})
+      .findOneAndUpdate({userid: req.params.userid },  {$set: {budgets:req.body}}, { new: true, upsert: true })
       .then(()=>{
         db.Budget.findOne({userid:req.params.userid})
         .then(budget =>{
