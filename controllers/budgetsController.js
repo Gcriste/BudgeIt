@@ -45,8 +45,25 @@ module.exports = {
 //   },
   update: function(req, res) {
     db.Budget
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .findOneAndUpdate({ id: req.params._id },  {$set:req.body})
+      .then(()=>{
+        db.Budget.findOne({userid:req.params.userid})
+        .then(budget =>{
+          res.status(200).json({
+            food:budget.food,
+            transportation:budget.transportation,
+            lifestyle:budget.lifestyle,
+            housing:budget.housing,
+            debt:budget.debt,
+            insurance:budget.insurance,
+            savings:budget.savings,
+            message:"user account successfully updated",
+            userid:budget.userid
+          })
+        })
+      }
+        
+      )
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {

@@ -7,9 +7,8 @@ const budgetSchema = new Schema({
         ref:'user'
     },
 
-    category: [{
         food: {
-            type:String
+            type:Number
         },
         transportation: {
             type:Number
@@ -29,8 +28,6 @@ const budgetSchema = new Schema({
         savings: {
             type:Number
         },
-    
-    }],
 
   limit:{type:Number},
   userid: {type: String},

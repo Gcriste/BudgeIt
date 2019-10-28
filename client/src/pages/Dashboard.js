@@ -15,6 +15,7 @@ class Dashboard extends Component {
   state = {
       userid:"",
       user:{},
+      budgets:{}
    
 
   };
@@ -38,23 +39,32 @@ class Dashboard extends Component {
     
    API.getUsers()
    .then(response => {
-     
+     let userId = response.data._id
+     console.log(userId)
       this.setState({
         user:response.data,
           userid:response.data._id
       })
 
-   
+    API.getBudgetByUser(userId)
+  .then(response => {
+    this.setState({
+      budgets:response.data[0]
     })
+  })
 
-  }
+
+
+  })
+}
+
 
 
   render() {
     
 
 
-    const {redirect, user} = this.state;
+    const {redirect, user, budgets } = this.state;
 
     if(redirect){
         return <Redirect to="/" />
@@ -78,8 +88,21 @@ class Dashboard extends Component {
                      
                      <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
                          {' '}
-                     {/* <p> <strong> Last Updated: <Moment date={user.updatedAt} format="MM/DD/YYYY" /></strong></p>
-                         {' '} */}
+                     <p> <strong> Food: {budgets.food} </strong></p>
+                         {' '}
+                         <p> <strong> Transportation: {budgets.transportation} </strong></p>
+                         {' '}
+                         <p> <strong> Lifestyle: {budgets.lifestyle} </strong></p>
+                         {' '}
+                         <p> <strong> Housing: {budgets.housing} </strong></p>
+                         {' '}
+                         <p> <strong> Debt: {budgets.debt} </strong></p>
+                         {' '}
+                         <p> <strong> Insurance: {budgets.insurance} </strong></p>
+                         {' '}
+                         <p> <strong> Savings: {budgets.savings} </strong></p>
+                         {' '}
+                         
                           </div> 
                           <div className= "col-md-6"></div>
                         <div className= "col-md-2">  

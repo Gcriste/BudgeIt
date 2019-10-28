@@ -9,11 +9,10 @@ router.route("/")
 // Matches with "/api/budgets/:userid"
 router.route("/:userid")
   .get(budgetsController.findById)
-
+  .put(budgetsController.update)
  
 
   router.route("/:id")
-  .put(budgetsController.update)
   .get(budgetsController.find)
   .delete(budgetsController.remove);
 

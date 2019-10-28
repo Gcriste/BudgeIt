@@ -7,13 +7,14 @@ import {Redirect } from "react-router-dom";
 import Moment from 'react-moment';
 import Dash from '../components/Dashboard';
 import {Input, PostButton} from '../components/Budget';
-
+import axios from 'axios'
 
 
 class Budget extends Component {
   state = {
       userid:"",
       user:{},
+      category:[],
       food:"",
       transportation:"",
       lifestyle:"",
@@ -43,7 +44,6 @@ class Budget extends Component {
     
    API.getUsers()
    .then(response => {
-     
       this.setState({
         user:response.data,
           userid:response.data._id
@@ -70,26 +70,25 @@ class Budget extends Component {
   
     API.getUsers()
     .then(response => {
-        const savedBudgets = {
+        const savedBudgets = [{
             food:this.state.food,
-            transportation:this.state.transportatio,
+            transportation:this.state.transportation,
             lifestyle:this.state.lifestyle,
             housing:this.state.housing,
             debt:this.state.debt,
-            insuarnce:this.state.insurance,
+            insurance:this.state.insurance,
             savings:this.state.savings,
-            userid:this.state.id
-           }
-     
-       API.saveBudget(savedBudgets)
-       .then(this.setState({
-           redirect:true,
-         })
-       
-       )
+            userid:this.state.userid
+           }]
+    //    API.saveBudget(savedBudgets)
+
+    axios.put('/api/budgets/' + response.data._id, savedBudgets)
+    .then(this.setState({
+        redirect:true,
+      })
     
-    
-  
+    )
+      
     .catch(err => {
       this.setState({
         errors:err.response.data
