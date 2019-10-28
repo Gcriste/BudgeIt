@@ -6,7 +6,8 @@ const transactionSchema = new Schema({
   amount:{type:Number,required:true},
   date: {type: Date},
   userid: {type:String},
-  budgetid:{type:String}
+  budgetid:{type:String},
+  category:{type:String}
   
 })
 

@@ -145,7 +145,7 @@ class CurrentBudget extends Component {
                      <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
-                     <h3> <strong> Current Monthly Income : {user.currentbudget}</strong></h3>
+                     <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
                          {' '}
                      
                      

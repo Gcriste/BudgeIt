@@ -6,12 +6,12 @@ import setAuthToken from "../utils/setAuthToken";
 import {Redirect } from "react-router-dom";
 import Moment from 'react-moment';
 import Dash from '../components/Dashboard';
+import {Category, Input, PostButton } from '../components/Transaction';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 
 
-
-
-class Dashboard extends Component {
+class Transaction extends Component {
   state = {
       userid:"",
       user:{},
@@ -22,7 +22,10 @@ class Dashboard extends Component {
       housing:"",
       debt:"",
       insurance:"",
-      savings:""
+      savings:"",
+      date:"",
+      description:"",
+      category:""
    
 
   };
@@ -72,7 +75,41 @@ class Dashboard extends Component {
 
 
   })
-}
+
+
+
+handlePostChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  
+  handlePostSubmit = event => {
+    event.preventDefault();
+    console.log("hi")
+
+    const newTransaction = {
+   
+     date: this.state.date,
+    description:this.state.description,
+     category:this.state.category,
+     userid:this.state.userid,
+     budgetid:this.state.budgetid
+   }
+   console.log(newTransaction)
+    // api call to post gig
+    API.postTransaction(newTransaction)
+    .then(this.setState({ 
+      redirect:true,
+     //  message: alert("Your posted a gig! on " + this.state.date) 
+     })
+      )
+    .catch(err => console.log(err));
+   }
+   }
+
 
 
 
@@ -93,9 +130,45 @@ class Dashboard extends Component {
       <div className="card">
         <div className = "profile-container">
          
-  <div className = "profile">
+            <div className = "profile">
                    <div className = "row">
                      <div className = "col-md-4">
+
+                     <Category
+                    value={this.state.category}
+                    onChange={this.handlePostChange}
+                    name="category"
+                    placeholder="Years of Experience"
+                    />
+
+                    {/* <DayPickerInput
+                    value={date}
+                    onDayChange={this.handleDayChange}
+                    dayPickerProps={{
+                    selectedDays: date,
+                        disabledDays: {
+                      // daysOfWeek: [0, 6],
+                    },
+                    }}
+                    /> */}
+
+                    <Input
+                    value={this.state.description}
+                    onChange={this.handlePostChange}
+                    name="description"
+                    placeholder="Description"
+                    />
+
+                    <Input
+                    value={this.state.date}
+                    onChange={this.handlePostChange}
+                    name="date"
+                    placeholder="date"
+                    />
+                   <PostButton 
+                    handlePostSubmit={this.handlePostSubmit}
+                    >
+                    </PostButton>
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
                      <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
@@ -128,6 +201,8 @@ class Dashboard extends Component {
                       <div className = "hidden content">
                       <i className = "right arrow icon"></i>
                     </div> 
+
+
                    </button>
                    </div>
                    </div>
@@ -138,11 +213,10 @@ class Dashboard extends Component {
               </div>
 
                      </Container>
-       
+      
       )
   }
+
 }
 
-
-
-export default Dashboard;
+export default Transaction;

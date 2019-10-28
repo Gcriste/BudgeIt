@@ -19,9 +19,9 @@ function Nav() {
                     <li className="nav-item" id="transaction">
                       <a className="nav-link" href="/transaction">Transactions</a>
                   </li>
-                  {/* <li className="nav-item" id="incomingrequest">
-                      <a className="nav-link" href="/incomingrequest">Incoming Request</a>
-                  </li>  */}
+                  <li className="nav-item" id="currentbudget">
+                      <a className="nav-link" href="/currentbudget">Monthly Income</a>
+                  </li>
               </ul>
           </div>
       </nav>
