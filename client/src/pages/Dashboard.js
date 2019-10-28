@@ -15,7 +15,14 @@ class Dashboard extends Component {
   state = {
       userid:"",
       user:{},
-      budgets:{}
+      budgets:{},
+      food:"",
+      transportation:"",
+      lifestyle:"",
+      housing:"",
+      debt:"",
+      insurance:"",
+      savings:""
    
 
   };
@@ -48,8 +55,30 @@ class Dashboard extends Component {
 
     API.getBudgetByUser(userId)
   .then(response => {
+    let results = response.data[0].budgets;
+    results = results = results.map(result => {
+      result = {
+        id: result.id,
+        food: result.food,
+        transportation: result.transportation,
+        lifestyle: result.lifestyle,
+        housing: result.housing,
+        debt: result.debt,
+        insurance:result.insurance,
+        savings:result.savings,
+    }
+    return result;
+})
+    console.log(results)
     this.setState({
-      budgets:response.data[0]
+      budgets:results,
+      food:response.data[0].budgets[0].food,
+      transportation:response.data[0].budgets[1].transportation,
+      lifestyle:response.data[0].budgets[2].lifestyle,
+      housing:response.data[0].budgets[3].housing,
+      debt:response.data[0].budgets[4].debt,
+      insurance:response.data[0].budgets[5].insurance,
+      savings:response.data[0].budgets[6].savings
     })
   })
 
@@ -64,7 +93,7 @@ class Dashboard extends Component {
     
 
 
-    const {redirect, user, budgets } = this.state;
+    const {redirect, user, food, transportation, lifestyle, housing, savings, debt, insurance} = this.state;
 
     if(redirect){
         return <Redirect to="/" />
@@ -88,19 +117,19 @@ class Dashboard extends Component {
                      
                      <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
                          {' '}
-                     <p> <strong> Food: {budgets.food} </strong></p>
+                     <p> <strong> Food: ${food} </strong></p>
                          {' '}
-                         <p> <strong> Transportation: {budgets.transportation} </strong></p>
+                         <p> <strong> Transportation: ${transportation} </strong></p>
                          {' '}
-                         <p> <strong> Lifestyle: {budgets.lifestyle} </strong></p>
+                         <p> <strong> Lifestyle: ${lifestyle} </strong></p>
                          {' '}
-                         <p> <strong> Housing: {budgets.housing} </strong></p>
+                         <p> <strong> Housing: ${housing} </strong></p>
                          {' '}
-                         <p> <strong> Debt: {budgets.debt} </strong></p>
+                         <p> <strong> Debt: ${debt} </strong></p>
                          {' '}
-                         <p> <strong> Insurance: {budgets.insurance} </strong></p>
+                         <p> <strong> Insurance: ${insurance} </strong></p>
                          {' '}
-                         <p> <strong> Savings: {budgets.savings} </strong></p>
+                         <p> <strong> Savings: ${savings} </strong></p>
                          {' '}
                          
                           </div> 

@@ -23,18 +23,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
-    const budgets = {};
-      if(food) budgets.food = food;
-      if(transportation) budgets.transportation = transportation;
-      if(lifestyle) budgets.lifestyle = lifestyle;
-      if(housing) budgets.housing = housing;
-      if(debt) budgets.debt = debt;
-      if(insurance) budgets.insurance = insurance;
-      if(savings) budgets.savings = savings;
-      if(userid) budgets.userid = userid;
+    // const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
+    // const budgets = {};
+    //   if(food) budgets.food = food;
+    //   if(transportation) budgets.transportation = transportation;
+    //   if(lifestyle) budgets.lifestyle = lifestyle;
+    //   if(housing) budgets.housing = housing;
+    //   if(debt) budgets.debt = debt;
+    //   if(insurance) budgets.insurance = insurance;
+    //   if(savings) budgets.savings = savings;
+    //   if(userid) budgets.userid = userid;
     db.Budget
-      .create(budgets)
+      .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -54,32 +54,22 @@ module.exports = {
 //   },
   update: function(req, res) {
   
-    const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
-    const budgets = {};
-      budgets.food = food;
-      budgets.transportation = transportation;
-      budgets.lifestyle = lifestyle;
-      budgets.housing = housing;
-      budgets.debt = debt;
-      budgets.insurance = insurance;
-      budgets.savings = savings;
-      budgets.userid = userid
+    // const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
+    // const budgets = {};
+    //   budgets.food = food;
+    //   budgets.transportation = transportation;
+    //   budgets.lifestyle = lifestyle;
+    //   budgets.housing = housing;
+    //   budgets.debt = debt;
+    //   budgets.insurance = insurance;
+    //   budgets.savings = savings;
+    //   budgets.userid = userid
       db.Budget
-      .findOneAndUpdate({userid: req.params.userid },  {$set:budgets})
+      .findOneAndUpdate({userid: req.params.userid },  {$set:req.body})
       .then(()=>{
         db.Budget.findOne({userid:req.params.userid})
         .then(budget =>{
-          res.status(200).json({
-            food:budget.food,
-            transportation:budget.transportation,
-            lifestyle:budget.lifestyle,
-            housing:budget.housing,
-            debt:budget.debt,
-            insurance:budget.insurance,
-            savings:budget.savings,
-            message:"user account successfully updated",
-            userid:budget.userid
-          })
+          res.status(200).json(budget)
         })
       }
         
