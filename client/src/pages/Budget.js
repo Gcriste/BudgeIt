@@ -81,6 +81,7 @@ class Budget extends Component {
             userid:this.state.userid
         }
     //    API.saveBudget(savedBudgets)
+    // axios.put('/api/budgets/' + response.data._id, savedBudgets)
     axios.put('/api/budgets/' + response.data._id, savedBudgets)
     .then(res=>{
         console.log(res.data)

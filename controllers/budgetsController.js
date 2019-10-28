@@ -23,9 +23,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-
+    const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
+    const budgets = {};
+      if(food) budgets.food = food;
+      if(transportation) budgets.transportation = transportation;
+      if(lifestyle) budgets.lifestyle = lifestyle;
+      if(housing) budgets.housing = housing;
+      if(debt) budgets.debt = debt;
+      if(insurance) budgets.insurance = insurance;
+      if(savings) budgets.savings = savings;
+      if(userid) budgets.userid = userid;
     db.Budget
-      .create(req.body)
+      .create(budgets)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -44,8 +53,19 @@ module.exports = {
 //       .catch(err => res.status(422).json(err));
 //   },
   update: function(req, res) {
-    db.Budget
-      .findOneAndUpdate({userid: req.params.userid },  {$set:req.body})
+  
+    const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
+    const budgets = {};
+      budgets.food = food;
+      budgets.transportation = transportation;
+      budgets.lifestyle = lifestyle;
+      budgets.housing = housing;
+      budgets.debt = debt;
+      budgets.insurance = insurance;
+      budgets.savings = savings;
+      budgets.userid = userid
+      db.Budget
+      .findOneAndUpdate({userid: req.params.userid },  {$set:budgets})
       .then(()=>{
         db.Budget.findOne({userid:req.params.userid})
         .then(budget =>{

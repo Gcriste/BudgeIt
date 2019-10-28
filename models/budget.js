@@ -6,7 +6,7 @@ const budgetSchema = new Schema({
         type:Schema.Types.ObjectId,
         ref:'user'
     },
-
+    budgets:[{
         food: {
             type:Number
         },
@@ -28,7 +28,7 @@ const budgetSchema = new Schema({
         savings: {
             type:Number
         },
-
+    }],
   limit:{type:Number},
   userid: {type: String},
 },
