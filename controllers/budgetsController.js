@@ -45,7 +45,7 @@ module.exports = {
 //   },
   update: function(req, res) {
     db.Budget
-      .findOneAndUpdate({ id: req.params._id },  {$set:req.body})
+      .findOneAndUpdate({userid: req.params.userid },  {$set:req.body})
       .then(()=>{
         db.Budget.findOne({userid:req.params.userid})
         .then(budget =>{

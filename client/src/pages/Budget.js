@@ -14,7 +14,7 @@ class Budget extends Component {
   state = {
       userid:"",
       user:{},
-      category:[],
+      budgets:[],
       food:"",
       transportation:"",
       lifestyle:"",
@@ -48,10 +48,10 @@ class Budget extends Component {
         user:response.data,
           userid:response.data._id
       })
+      console.log(response.data)
 
-   
     })
-
+   
   }
 
 
@@ -70,7 +70,7 @@ class Budget extends Component {
   
     API.getUsers()
     .then(response => {
-        const savedBudgets = [{
+        const savedBudgets = {
             food:this.state.food,
             transportation:this.state.transportation,
             lifestyle:this.state.lifestyle,
@@ -79,14 +79,15 @@ class Budget extends Component {
             insurance:this.state.insurance,
             savings:this.state.savings,
             userid:this.state.userid
-           }]
+        }
     //    API.saveBudget(savedBudgets)
-
     axios.put('/api/budgets/' + response.data._id, savedBudgets)
-    .then(this.setState({
-        redirect:true,
+    .then(res=>{
+        console.log(res.data)
+            this.setState({
+        redirect:true
       })
-    
+        }
     )
       
     .catch(err => {
