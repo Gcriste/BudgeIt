@@ -12,7 +12,12 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 
 class Transaction extends Component {
-  state = {
+
+    constructor(props) {
+        super(props);
+        // this.handleDayChange = this.handleDayChange.bind(this);
+
+  this.state = {
       userid:"",
       user:{},
       budgets:{},
@@ -24,12 +29,11 @@ class Transaction extends Component {
       insurance:"",
       savings:"",
       date:"",
+      amount:"",
       description:"",
       category:""
-   
-
-  };
-
+    };
+    }
 
    handleLogout = () => {
         localStorage.removeItem('example-app')
@@ -76,7 +80,7 @@ class Transaction extends Component {
 
   })
 
-
+  }
 
 handlePostChange = event => {
     const { name, value } = event.target;
@@ -95,6 +99,7 @@ handlePostChange = event => {
      date: this.state.date,
     description:this.state.description,
      category:this.state.category,
+     amount:this.state.amount,
      userid:this.state.userid,
      budgetid:this.state.budgetid
    }
@@ -108,7 +113,7 @@ handlePostChange = event => {
       )
     .catch(err => console.log(err));
    }
-   }
+
 
 
 
@@ -157,6 +162,12 @@ handlePostChange = event => {
                     onChange={this.handlePostChange}
                     name="description"
                     placeholder="Description"
+                    />
+                    <Input
+                    value={this.state.amount}
+                    onChange={this.handlePostChange}
+                    name="amount"
+                    placeholder="Amount"
                     />
 
                     <Input
