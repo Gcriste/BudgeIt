@@ -28,10 +28,6 @@ export default {
   logsUser: function(){
     return axios.post("/api/users/login");
   },
-
-  updateUser: function(id){
-    return axios.put("/api/users/?_id="+ id)
-  },
   test:function(){
     return axios.get("/api/users/test")
   },

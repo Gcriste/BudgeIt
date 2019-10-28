@@ -10,21 +10,18 @@ function Nav() {
           <div id="navbarNav">
               <ul className="navbar-nav">
                  
-                  <li className="nav-item" id="saved">
-                      <a className="nav-link" href="/saved">Home</a>
+                  <li className="nav-item" id="dashboard">
+                      <a className="nav-link" href="/dashboard">Home</a>
                   </li>
-                  <li className="nav-item" id="search">
-                      <a className="nav-link" href="/search">Search Gigs</a>
+                  <li className="nav-item" id="budget">
+                      <a className="nav-link" href="/budget">Budgets</a>
                   </li>
-                    <li className="nav-item" id="post">
-                      <a className="nav-link" href="/post">Post a Gig</a>
+                    <li className="nav-item" id="transaction">
+                      <a className="nav-link" href="/transaction">Transactions</a>
                   </li>
-                  {/* {/* <li className="nav-item" id="login">
-                      <a className="nav-link" href="/login">Login</a>
-                  </li> */}
-                  <li className="nav-item" id="incomingrequest">
+                  {/* <li className="nav-item" id="incomingrequest">
                       <a className="nav-link" href="/incomingrequest">Incoming Request</a>
-                  </li> 
+                  </li>  */}
               </ul>
           </div>
       </nav>

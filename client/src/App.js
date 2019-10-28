@@ -8,7 +8,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import CurrentBudget from './pages/CurrentBudget';
-
+import Budget from './pages/Budget';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <div>
         <Nav />
         <Switch>
+          <PrivateRoute exact path = "/budget" component ={Budget} />
           <Route exact path="/createaccount" component={CreateAccount} /> 
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/currentbudget" component={CurrentBudget} />

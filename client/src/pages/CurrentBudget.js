@@ -140,13 +140,14 @@ class CurrentBudget extends Component {
                 name="currentbudget"
                 placeholder="Enter Your Monthly Income"
               />
+
                    <div className = "row">
                      <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
-                     {/* <h3> <strong> Email Address {user.email}</strong></h3>
+                     <h3> <strong> Current Monthly Income : {user.currentbudget}</strong></h3>
                          {' '}
-                      */}
+                     
                      
                      <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
                          {' '}
