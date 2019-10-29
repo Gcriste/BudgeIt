@@ -78,7 +78,7 @@ class Budget extends Component {
             {debt:this.state.debt},
             {insurance:this.state.insurance},
             {savings:this.state.savings},
-            {userid:this.state.userid}
+            {userid:this.state.userid},
     ]
 
     this.setState({

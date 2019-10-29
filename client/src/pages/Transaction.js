@@ -31,7 +31,8 @@ class Transaction extends Component {
       date:"",
       amount:"",
       description:"",
-      category:""
+      category:"",
+      budgetid:""
     };
     }
 
@@ -72,7 +73,8 @@ class Transaction extends Component {
       housing:response.data[0].budgets[3].housing,
       debt:response.data[0].budgets[4].debt,
       insurance:response.data[0].budgets[5].insurance,
-      savings:response.data[0].budgets[6].savings
+      savings:response.data[0].budgets[6].savings,
+      budgetid:response.data[0]._id
     })
   })
 
@@ -91,6 +93,8 @@ handlePostChange = event => {
 
   
   handlePostSubmit = event => {
+
+    
     event.preventDefault();
     console.log("hi")
 
