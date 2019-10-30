@@ -78,7 +78,12 @@ class Transaction extends Component {
     })
   })
 
+  API.getTransactionByUser(userId)
+  .then(response => {
+    console.log(response.data)
 
+    
+  })
 
   })
 
