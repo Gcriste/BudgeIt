@@ -31,8 +31,8 @@ class Transaction extends Component {
       date:"",
       amount:"",
       description:"",
-      category:"",
-      budgetid:""
+     transactions:[],
+      budgetid:"",
     };
     }
 
@@ -78,11 +78,29 @@ class Transaction extends Component {
     })
   })
 
+  let categories = [];
+  let foodarray = [];
   API.getTransactionByUser(userId)
-  .then(response => {
-    console.log(response.data)
+  .then(res => {
+    let results = res.data
+    console.log(res.data)
+    // map through the array of transactions
+    results = results.map(result => {
+        //store each gig information in a new object 
+        result = {
+            id: result.id,
+            amount: result.amount,
+            budgetid: result.budgetid,
+            category: result.category,
+            date: result.date,
+            description:result.description,
+            userid:result.userid
+        }
+        return result;
+    })
 
-    
+    this.setState({ categories: results, error: "" })
+ 
   })
 
   })
