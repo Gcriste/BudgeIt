@@ -8,6 +8,8 @@ import Moment from 'react-moment';
 import Dash from '../components/Dashboard';
 import {Category, Input, PostButton } from '../components/Transaction';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import PrintTransaction from "../components/PrintTransactions";
+
 
 
 
@@ -99,7 +101,7 @@ class Transaction extends Component {
         return result;
     })
 
-    this.setState({ categories: results, error: "" })
+    this.setState({ transactions: results, error: "" })
  
   })
 
@@ -158,7 +160,7 @@ handlePostChange = event => {
       return (
         <Container>
   
-        <Dash />
+        
       <div className="card">
         <div className = "profile-container">
          
@@ -206,7 +208,13 @@ handlePostChange = event => {
                    <PostButton 
                     handlePostSubmit={this.handlePostSubmit}
                     >
+
                     </PostButton>
+
+
+                    <PrintTransaction   transactions ={this.state.transactions} />
+                    
+                  
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
                      <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
