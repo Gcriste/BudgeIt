@@ -9,7 +9,7 @@ import Dash from '../components/Dashboard';
 import {Category, Input, PostButton } from '../components/Transaction';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import PrintTransaction from "../components/PrintTransactions";
-
+import TotalTransaction from '../components/TotalTransaction';
 
 
 
@@ -35,6 +35,14 @@ class Transaction extends Component {
       description:"",
      transactions:[],
       budgetid:"",
+      foodArray:[],
+      transportationArray:[],
+      lifestyleArray:[],
+      housingArray:[],
+      debtArray:[],
+      insuranceArray:[],
+      savingsArray:[]
+
     };
     }
 
@@ -80,8 +88,15 @@ class Transaction extends Component {
     })
   })
 
-  let categories = [];
-  let foodarray = [];
+  let foodArray = [];
+  let transportationArray =[];
+  let lifestyleArray = [];
+  let housingArray = [];
+  let debtArray = [];
+  let insuranceArray = [];
+  let savingsArray = []; 
+
+
   API.getTransactionByUser(userId)
   .then(res => {
     let results = res.data
@@ -98,11 +113,56 @@ class Transaction extends Component {
             description:result.description,
             userid:result.userid
         }
+
+        if(result.category === "food"){
+          foodArray.push(result)
+        }
+        if(result.category === "transportation"){
+          transportationArray.push(result)
+        }
+        if(result.category === "lifestyle"){
+          lifestyleArray.push(result)
+        }
+        if(result.category === "housing"){
+          housingArray.push(result)
+        }
+        if(result.category === "debt"){
+          debtArray.push(result)
+        }
+        if(result.category === "insurance"){
+          insuranceArray.push(result)
+        }
+        if(result.category === "savings"){
+          savingsArray.push(result)
+        }
+      
         return result;
     })
 
-    this.setState({ transactions: results, error: "" })
+     console.log(foodArray)
+     console.log(transportationArray)
+     console.log(lifestyleArray)
+     console.log(housingArray) 
+     console.log(debtArray)
+     console.log(insuranceArray)
+     console.log(savingsArray)
+
+
+    this.setState({ transactions: results, 
+      foodArray:foodArray,
+      transportationArray:transportationArray,
+      lifestyleArray:lifestyleArray,
+      housingArray:housingArray,
+      debtArray:debtArray,
+      insuranceArray:insuranceArray,
+      savingsArray:savingsArray,
+      error: "" })
  
+
+
+
+
+
   })
 
   })
@@ -214,7 +274,18 @@ handlePostChange = event => {
 
                     <PrintTransaction   transactions ={this.state.transactions} />
                     
-                  
+                    <TotalTransaction 
+                    foodArray ={this.state.foodArray}
+                    transportationArray ={this.state.transportationArray}
+                    lifestyleArray ={this.state.lifestyleArray}
+                    housingArray ={this.state.housingArray}
+                    debtArray ={this.state.debtArray}
+                    insuranceArray ={this.state.insuranceArray}
+                    savingsArray ={this.state.savingsArray}
+                    />
+
+
+
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
                      <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
