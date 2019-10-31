@@ -214,7 +214,7 @@ handlePostChange = event => {
     const {redirect, user, food, transportation, lifestyle, housing, savings, debt, insurance} = this.state;
 
     if(redirect){
-        return <Redirect to="/" />
+        return <Redirect to="/transaction" />
     }
   
       return (
@@ -271,9 +271,12 @@ handlePostChange = event => {
 
                     </PostButton>
 
-
+                    </div>
                     <PrintTransaction   transactions ={this.state.transactions} />
-                    
+                  
+                     <div className = "col-md-4">
+
+
                     <TotalTransaction 
                     foodArray ={this.state.foodArray}
                     transportationArray ={this.state.transportationArray}
@@ -284,8 +287,9 @@ handlePostChange = event => {
                     savingsArray ={this.state.savingsArray}
                     />
 
-
-
+                    </div>
+               
+                    <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
                      <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
@@ -310,7 +314,9 @@ handlePostChange = event => {
                          {' '}
                          
                           </div> 
-                          <div className= "col-md-6"></div>
+                         
+                
+                         
                         <div className= "col-md-2">  
                      <button className = "ui orange animated button" tabindex ="0"
                      onClick = { this.handleLogout}> 
@@ -322,6 +328,7 @@ handlePostChange = event => {
 
                    </button>
                    </div>
+                  
                    </div>
 
                 </div>

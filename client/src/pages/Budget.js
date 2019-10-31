@@ -119,8 +119,7 @@ class Budget extends Component {
   
       return (
         <Container>
-  
-        <Dash />
+
       <div className="card">
         <div className = "profile-container">
          
