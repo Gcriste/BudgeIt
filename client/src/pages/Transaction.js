@@ -292,12 +292,13 @@ handlePostChange = event => {
                     <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
-                     <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
+                     <h3> <strong> Current Monthly Income: ${user.currentbudget}</strong></h3>
                          {' '}
                      
                      
                      <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
                          {' '}
+
                      <p> <strong> Food: ${food} </strong></p>
                          {' '}
                          <p> <strong> Transportation: ${transportation} </strong></p>
