@@ -182,7 +182,7 @@ class TotalBudget extends Component {
     
 
 
-    const {redirect, user, food, transportation, lifestyle, housing, savings, debt, insurance} = this.state;
+    const {redirect, user, food, transportation, lifestyle, housing, savings, debt, insurance, foodArray, transportationArray, lifestyleArray, housingArray, debtArray, insuranceArray, savingsArray} = this.state;
 
     if(redirect){
         return <Redirect to="/transaction" />
@@ -198,41 +198,29 @@ class TotalBudget extends Component {
             <div className = "profile">
                    <div className = "row">
 
-                   <div className = "col-md-4">
-                     <h1> <strong> Welcome {user.firstname}</strong></h1>
+                   <div className = "col-md-5">
+                     <h1> <strong> Current Monthly Income: ${user.currentbudget}</strong></h1>
                          {' '}
-                     <h3> <strong> Current Monthly Income: ${user.currentbudget}</strong></h3>
-                         {' '}
-            
-                     <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
-                         {' '}
-
                          <TotalTransaction 
-                    foodArray ={this.state.foodArray} 
-                    transportationArray ={this.state.transportationArray}
-                    lifestyleArray ={this.state.lifestyleArray}
-                    housingArray ={this.state.housingArray}
-                    debtArray ={this.state.debtArray}
-                    insuranceArray ={this.state.insuranceArray}
-                    savingsArray ={this.state.savingsArray}
+                    foodArray ={foodArray}  
+                    transportationArray ={transportationArray}
+                    lifestyleArray ={lifestyleArray}
+                    housingArray ={housingArray}
+                    debtArray ={debtArray}
+                    insuranceArray ={insuranceArray}
+                    savingsArray ={savingsArray}
                     budgets = {this.state.budgets}
                     />
                          
-                          </div> 
-                         
-                
-                         
-                        <div className= "col-md-2">  
-                     <button className = "ui orange animated button" tabindex ="0"
-                     onClick = { this.handleLogout}> 
-                     <div className = "visible content">Logout</div>
-                      <div className = "hidden content">
-                      <i className = "right arrow icon"></i>
-                    </div> 
-                   </button>
-                   </div>
+                    </div>
 
-                   <div className = "col-md-4">
+                   <div className = "col-md-5">
+                   <br></br><br></br><br></br>
+                   <div className="card">
+                     <div className="card-body player">
+                      <div className="article">
+             
+               
                      <h1> Money Budgetted</h1>
                    <p> <strong> Budget for Food: ${food} </strong></p>
                          {' '}
@@ -249,14 +237,25 @@ class TotalBudget extends Component {
                          <p> <strong>  Budget for Savings: ${savings} </strong></p>
                          {' '}
 
-                   
+                   </div>
+                   </div>
+                   </div>
 
                     </div>
 
-                     
-                  
+                    <div className = "col-md-2">
+                   <button className = "ui orange animated button" tabindex ="0"
+                     onClick = { this.handleLogout}> 
+                     <div className = "visible content">Logout</div>
+                      <div className = "hidden content">
+                      <i className = "right arrow icon"></i>
+                    </div> 
+                   </button>
+                   </div>
                    </div>
 
+
+                  
                 </div>
                 </div>
 

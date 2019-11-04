@@ -9,16 +9,13 @@ import Dash from '../components/Dashboard';
 import {Category, Input, PostButton } from '../components/Transaction';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import PrintTransaction from "../components/PrintTransactions";
-import TotalTransaction from '../components/TotalTransaction';
-
-
+import 'react-day-picker/lib/style.css'
 
 class Transaction extends Component {
 
     constructor(props) {
         super(props);
-        // this.handleDayChange = this.handleDayChange.bind(this);
-
+        this.handleDayChange = this.handleDayChange.bind(this);
   this.state = {
       userid:"",
       user:{},
@@ -104,6 +101,15 @@ handlePostChange = event => {
     });
   };
 
+
+  handleDayChange(date, modifiers, dayPickerInput) {
+    const input = dayPickerInput.getInput();
+    this.setState({
+      date,
+      isEmpty: !input.value.trim(),
+      isDisabled: modifiers.disabled === true,
+    });
+  }
   
   handlePostSubmit = event => {
 
@@ -139,7 +145,7 @@ handlePostChange = event => {
     
 
 
-    const {redirect, user} = this.state;
+    const {redirect, user, date} = this.state;
 
     if(redirect){
         return <Redirect to="/transaction" />
@@ -154,31 +160,6 @@ handlePostChange = event => {
          
             <div className = "profile">
                    <div className = "row">
-
-                   <div className = "col-md-4">
-                     <h1> <strong> Welcome {user.firstname}</strong></h1>
-                         {' '}
-                     <h3> <strong> Current Monthly Income: ${user.currentbudget}</strong></h3>
-                         {' '}
-            
-                     <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
-                         {' '}
-
-                         
-                          </div> 
-                         
-                
-                         
-                        <div className= "col-md-2">  
-                     <button className = "ui orange animated button" tabindex ="0"
-                     onClick = { this.handleLogout}> 
-                     <div className = "visible content">Logout</div>
-                      <div className = "hidden content">
-                      <i className = "right arrow icon"></i>
-                    </div> 
-                   </button>
-                   </div>
-
 
                      <div className = "col-md-4">
                        <h1> Enter New Transaction</h1>
@@ -212,13 +193,17 @@ handlePostChange = event => {
                     name="amount"
                     placeholder="Amount"
                     />
-
-                    <Input
-                    value={this.state.date}
-                    onChange={this.handlePostChange}
-                    name="date"
-                    placeholder="date"
+                  <DayPickerInput
+                    value={date}
+                    onDayChange={this.handleDayChange}
+                    dayPickerProps={{
+                    selectedDays: date,
+                        disabledDays: {
+                      // daysOfWeek: [0, 6],
+                    },
+                    }}
                     />
+                 
                    <PostButton 
                     handlePostSubmit={this.handlePostSubmit}
                     >

@@ -92,7 +92,7 @@ class Dashboard extends Component {
       <div className="card">
         <div className = "profile-container">
          
-  <div className = "profile">
+            <div className = "profile">
                    <div className = "row">
                      <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
@@ -103,7 +103,7 @@ class Dashboard extends Component {
                          {' '}
 
                          <a href={"/currentbudget"}>
-                            <button className="ui primary animated button" tabindex="0">
+                            <button className="ui green animated button" tabindex="0">
                                 <div className = "visible content">Update Monthly Income </div>
                                 <div className = "hidden content">
                                     <i className = "right arrow icon"></i>
@@ -111,8 +111,9 @@ class Dashboard extends Component {
                                 </button>
                                 </a>
                            
-                     
-                   
+                     <div className = "card">
+                                <div className="card-body player">
+                                  <div className="article">
                      <p> <strong> Food: ${food} </strong></p>
                          {' '}
                          <p> <strong> Transportation: ${transportation} </strong></p>
@@ -130,7 +131,7 @@ class Dashboard extends Component {
                          
                          
                           <a href={"/budget"}>
-                            <button className="ui primary animated button" tabindex="0">
+                            <button className="ui green animated button" tabindex="0">
                                 <div className = "visible content">Update Budgets </div>
                                 <div className = "hidden content">
                                     <i className = "right arrow icon"></i>
@@ -138,8 +139,9 @@ class Dashboard extends Component {
                                 </button>
                                 </a>
                             </div> 
-
-
+                            </div>
+                            </div>
+                            </div>
                           <div className= "col-md-6"></div>
                         <div className= "col-md-2">  
                      <button className = "ui orange animated button" tabindex ="0"
