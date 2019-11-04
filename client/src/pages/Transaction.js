@@ -148,7 +148,8 @@ class Transaction extends Component {
      console.log(savingsArray)
 
 
-    this.setState({ transactions: results, 
+    this.setState({ 
+      transactions: results, 
       foodArray:foodArray,
       transportationArray:transportationArray,
       lifestyleArray:lifestyleArray,
@@ -244,6 +245,7 @@ handlePostChange = event => {
                     debtArray ={this.state.debtArray}
                     insuranceArray ={this.state.insuranceArray}
                     savingsArray ={this.state.savingsArray}
+                    budgets = {this.state.budgets}
                     />
                          
                           </div> 

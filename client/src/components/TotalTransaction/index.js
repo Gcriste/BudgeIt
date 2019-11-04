@@ -42,6 +42,7 @@ return (
                                 <h4 className="transactionDebt"> Spent on Debts: ${debtSum}</h4>
                                 <h4 className="transactionInsurance"> Spent on Insurance: ${insuranceSum}</h4>
                                 <h4 className="transactionSavings"> Spent on Savings: ${savingsSum}</h4>
+                                {/* <h4> {budgets}</h4> */}
                             </Col>
                         </Row>
 
