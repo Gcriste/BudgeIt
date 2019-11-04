@@ -10,7 +10,7 @@ import NoMatch from "./pages/NoMatch";
 import CurrentBudget from './pages/CurrentBudget';
 import Budget from './pages/Budget';
 import Transaction from './pages/Transaction';
-
+import TotalBudget from './pages/TotalBudget';
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
         <Switch>
           <PrivateRoute exact path = "/budget" component ={Budget} />
           <Route exact path="/createaccount" component={CreateAccount} /> 
-          <Route exact path="/transaction" component={Transaction} /> 
+          <PrivateRoute exact path="/transaction" component={Transaction} /> 
+          <PrivateRoute exact path="/totalbudget" component={TotalBudget} /> 
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/currentbudget" component={CurrentBudget} />
           <PrivateRoute exact path="/dashboard/:id" component={Dashboard} />

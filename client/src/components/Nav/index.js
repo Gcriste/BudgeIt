@@ -14,14 +14,14 @@ function Nav() {
                       <a className="nav-link" href="/dashboard">Home</a>
                   </li>
                   <li className="nav-item" id="budget">
-                      <a className="nav-link" href="/budget">Budgets</a>
+                      <a className="nav-link" href="/totalbudget">Total Budgets</a>
                   </li>
                     <li className="nav-item" id="transaction">
                       <a className="nav-link" href="/transaction">Transactions</a>
                   </li>
-                  <li className="nav-item" id="currentbudget">
+                  {/* <li className="nav-item" id="currentbudget">
                       <a className="nav-link" href="/currentbudget">Monthly Income</a>
-                  </li>
+                  </li> */}
               </ul>
           </div>
       </nav>

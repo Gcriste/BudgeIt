@@ -97,12 +97,22 @@ class Dashboard extends Component {
                      <div className = "col-md-4">
                      <h1> <strong> Welcome {user.firstname}</strong></h1>
                          {' '}
+                    <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
+                    {' '}
                      <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
                          {' '}
+
+                         <a href={"/currentbudget"}>
+                            <button className="ui primary animated button" tabindex="0">
+                                <div className = "visible content">Update Monthly Income </div>
+                                <div className = "hidden content">
+                                    <i className = "right arrow icon"></i>
+                                  </div>      
+                                </button>
+                                </a>
+                           
                      
-                     
-                     <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
-                         {' '}
+                   
                      <p> <strong> Food: ${food} </strong></p>
                          {' '}
                          <p> <strong> Transportation: ${transportation} </strong></p>
@@ -118,7 +128,18 @@ class Dashboard extends Component {
                          <p> <strong> Savings: ${savings} </strong></p>
                          {' '}
                          
-                          </div> 
+                         
+                          <a href={"/budget"}>
+                            <button className="ui primary animated button" tabindex="0">
+                                <div className = "visible content">Update Budgets </div>
+                                <div className = "hidden content">
+                                    <i className = "right arrow icon"></i>
+                                  </div>      
+                                </button>
+                                </a>
+                            </div> 
+
+
                           <div className= "col-md-6"></div>
                         <div className= "col-md-2">  
                      <button className = "ui orange animated button" tabindex ="0"

@@ -132,13 +132,6 @@ class CurrentBudget extends Component {
          
   <div className = "profile">
 
-                <Current
-                value={this.state.currentbudget}
-                type="name"
-                onChange={this.handleCurrentBudgetChange}
-                name="currentbudget"
-                placeholder="Enter Your Monthly Income"
-              />
 
                    <div className = "row">
                      <div className = "col-md-4">
@@ -149,9 +142,15 @@ class CurrentBudget extends Component {
                      
                      
                      <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
-                         {' '}
-                     {/* <p> <strong> Last Updated: <Moment date={user.updatedAt} format="MM/DD/YYYY" /></strong></p>
-                         {' '} */}
+                     
+                          <Current
+                          value={this.state.currentbudget}
+                          type="name"
+                          onChange={this.handleCurrentBudgetChange}
+                          name="currentbudget"
+                          placeholder="Enter Your Monthly Income"
+                        />
+                        
                           </div> 
                           <div className= "col-md-6"></div>
                         <div className= "col-md-2">  
@@ -164,15 +163,14 @@ class CurrentBudget extends Component {
                    </button>
                    </div>
                    </div>
-
+                   <PostButton 
+                    handleCurrentBudgetSubmit={this.handleCurrentBudgetSubmit}>
+                  </PostButton>
                 </div>
                 </div>
 
               </div>
-              <PostButton 
-                handleCurrentBudgetSubmit={this.handleCurrentBudgetSubmit}
-              >
-              </PostButton>
+            
 
                      </Container>
        
