@@ -226,8 +226,63 @@ handlePostChange = event => {
          
             <div className = "profile">
                    <div className = "row">
-                     <div className = "col-md-4">
 
+                   <div className = "col-md-4">
+                     <h1> <strong> Welcome {user.firstname}</strong></h1>
+                         {' '}
+                     <h3> <strong> Current Monthly Income: ${user.currentbudget}</strong></h3>
+                         {' '}
+            
+                     <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
+                         {' '}
+
+                         <TotalTransaction 
+                    foodArray ={this.state.foodArray} 
+                    transportationArray ={this.state.transportationArray}
+                    lifestyleArray ={this.state.lifestyleArray}
+                    housingArray ={this.state.housingArray}
+                    debtArray ={this.state.debtArray}
+                    insuranceArray ={this.state.insuranceArray}
+                    savingsArray ={this.state.savingsArray}
+                    />
+                         
+                          </div> 
+                         
+                
+                         
+                        <div className= "col-md-2">  
+                     <button className = "ui orange animated button" tabindex ="0"
+                     onClick = { this.handleLogout}> 
+                     <div className = "visible content">Logout</div>
+                      <div className = "hidden content">
+                      <i className = "right arrow icon"></i>
+                    </div> 
+                   </button>
+                   </div>
+
+                   <div className = "col-md-4">
+                     <h1> Money Budgetted</h1>
+                   <p> <strong> Budget for Food: ${food} </strong></p>
+                         {' '}
+                         <p> <strong> Budget for Transportation: ${transportation} </strong></p>
+                         {' '}
+                         <p> <strong> Budget for Lifestyle: ${lifestyle} </strong></p>
+                         {' '}
+                         <p> <strong>  Budget for Housing: ${housing} </strong></p>
+                         {' '}
+                         <p> <strong>  Budget for Debt: ${debt} </strong></p>
+                         {' '}
+                         <p> <strong>  Budget for Insurance: ${insurance} </strong></p>
+                         {' '}
+                         <p> <strong>  Budget for Savings: ${savings} </strong></p>
+                         {' '}
+
+                   
+
+                    </div>
+
+                     <div className = "col-md-4">
+                       <h1> Enter New Transaction</h1>
                      <Category
                     value={this.state.category}
                     onChange={this.handlePostChange}
@@ -274,61 +329,8 @@ handlePostChange = event => {
                     </div>
                     <PrintTransaction   transactions ={this.state.transactions} />
                   
-                     <div className = "col-md-4">
-
-
-                    <TotalTransaction 
-                    foodArray ={this.state.foodArray}
-                    transportationArray ={this.state.transportationArray}
-                    lifestyleArray ={this.state.lifestyleArray}
-                    housingArray ={this.state.housingArray}
-                    debtArray ={this.state.debtArray}
-                    insuranceArray ={this.state.insuranceArray}
-                    savingsArray ={this.state.savingsArray}
-                    />
-
-                    </div>
+                    
                
-                    <div className = "col-md-4">
-                     <h1> <strong> Welcome {user.firstname}</strong></h1>
-                         {' '}
-                     <h3> <strong> Current Monthly Income: ${user.currentbudget}</strong></h3>
-                         {' '}
-                     
-                     
-                     <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
-                         {' '}
-
-                     <p> <strong> Food: ${food} </strong></p>
-                         {' '}
-                         <p> <strong> Transportation: ${transportation} </strong></p>
-                         {' '}
-                         <p> <strong> Lifestyle: ${lifestyle} </strong></p>
-                         {' '}
-                         <p> <strong> Housing: ${housing} </strong></p>
-                         {' '}
-                         <p> <strong> Debt: ${debt} </strong></p>
-                         {' '}
-                         <p> <strong> Insurance: ${insurance} </strong></p>
-                         {' '}
-                         <p> <strong> Savings: ${savings} </strong></p>
-                         {' '}
-                         
-                          </div> 
-                         
-                
-                         
-                        <div className= "col-md-2">  
-                     <button className = "ui orange animated button" tabindex ="0"
-                     onClick = { this.handleLogout}> 
-                     <div className = "visible content">Logout</div>
-                      <div className = "hidden content">
-                      <i className = "right arrow icon"></i>
-                    </div> 
-
-
-                   </button>
-                   </div>
                   
                    </div>
 

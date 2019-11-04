@@ -31,17 +31,17 @@ return (
     <div className="card">
         <div className="card-body player">
             <div className="article">
-                <h1>Transaction Totals</h1>
+                <h1>Money Spent This Month</h1>
                         <Row className="TotalTransaction row">  
                             <Col
                                 className="col-md-6 transactionTotals">
-                                <h2 className="transactionFood"> Food Sum: ${foodSum}</h2>
-                                <h2 className="transactionTransportation"> Transportation Sum: ${transportationSum}</h2>
-                                <h2 className="transactionLifestyle"> Lifestyle Sum: ${lifestyleSum}</h2>
-                                <h2 className="transactionHousing"> Housing Sum: ${housingSum}</h2>
-                                <h2 className="transactionDebt"> Debt Sum: ${debtSum}</h2>
-                                <h2 className="transactionInsurance"> Insurance Sum: ${insuranceSum}</h2>
-                                <h2 className="transactionSavings"> Savings Sum: ${savingsSum}</h2>
+                                <h4 className="transactionFood"> Spent on Food: ${foodSum}</h4>
+                                <h4 className="transactionTransportation"> Spent on Transportation: ${transportationSum}</h4>
+                                <h4 className="transactionLifestyle"> Spent on Lifestyle: ${lifestyleSum}</h4>
+                                <h4 className="transactionHousing"> Spent on Housing: ${housingSum}</h4>
+                                <h4 className="transactionDebt"> Spent on Debts: ${debtSum}</h4>
+                                <h4 className="transactionInsurance"> Spent on Insurance: ${insuranceSum}</h4>
+                                <h4 className="transactionSavings"> Spent on Savings: ${savingsSum}</h4>
                             </Col>
                         </Row>
 
