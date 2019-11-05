@@ -163,47 +163,39 @@ handlePostChange = event => {
 
                      <div className = "col-md-4">
                        <h1> Enter New Transaction</h1>
+                       <DayPickerInput
+                    value={date}
+                    onDayChange={this.handleDayChange}
+                    dayPickerProps={{
+                    selectedDays: date,
+                        disabledDays: {
+                      // daysOfWeek: [0, 6],
+                    },
+                    }}
+                    />
                      <Category
                     value={this.state.category}
                     onChange={this.handlePostChange}
                     name="category"
                     placeholder="Years of Experience"
                     />
-
-                    {/* <DayPickerInput
-                    value={date}
-                    onDayChange={this.handleDayChange}
-                    dayPickerProps={{
-                    selectedDays: date,
-                        disabledDays: {
-                      // daysOfWeek: [0, 6],
-                    },
-                    }}
-                    /> */}
-
+                    <br></br>
+                   
                     <Input
                     value={this.state.description}
                     onChange={this.handlePostChange}
                     name="description"
                     placeholder="Description"
                     />
+                   
                     <Input
                     value={this.state.amount}
                     onChange={this.handlePostChange}
                     name="amount"
                     placeholder="Amount"
                     />
-                  <DayPickerInput
-                    value={date}
-                    onDayChange={this.handleDayChange}
-                    dayPickerProps={{
-                    selectedDays: date,
-                        disabledDays: {
-                      // daysOfWeek: [0, 6],
-                    },
-                    }}
-                    />
                  
+              <br></br><br></br><br></br><br></br><br></br>
                    <PostButton 
                     handlePostSubmit={this.handlePostSubmit}
                     >
@@ -211,10 +203,19 @@ handlePostChange = event => {
                     </PostButton>
 
                     </div>
+                    <div className = "col-md-6">
                     <PrintTransaction   transactions ={this.state.transactions} />
-                  
+                    </div>
                     
-               
+                  <div className = "col-md-2">
+                   <button className = "ui orange animated button" tabindex ="0"
+                     onClick = { this.handleLogout}> 
+                     <div className = "visible content">Logout</div>
+                      <div className = "hidden content">
+                      <i className = "right arrow icon"></i>
+                    </div> 
+                   </button>
+                   </div>
                   
                    </div>
 

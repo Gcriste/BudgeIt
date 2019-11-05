@@ -1,6 +1,7 @@
 import React from "react";
 import {Row, Col} from "../Grid";
 import Moment from 'react-moment';
+import numeral from 'numeral';
 
 
 const TotalTransaction = props => {
@@ -26,6 +27,18 @@ const TotalTransaction = props => {
       let savingsSum = props.savingsArray.reduce(function(prev, current) {
         return prev + +current.amount
       }, 0);
+
+      let foodCurrency = numeral(foodSum).format('0,0[.]00');
+      let transportationCurrency = numeral(transportationSum).format('0,0[.]00');
+      let lifestyleCurrency = numeral(lifestyleSum).format('0,0[.]00');
+      let housingCurrency = numeral(housingSum).format('0,0[.]00');
+      let debtCurrency = numeral(debtSum).format('0,0[.]00');
+      let insuranceCurrency = numeral(insuranceSum).format('0,0[.]00');
+      let savingsCurrency = numeral(savingsSum).format('0,0[.]00');
+
+
+
+
 return (
     
     <div className="card">
@@ -35,13 +48,13 @@ return (
                         <Row className="TotalTransaction row">  
                             <Col
                                 className="col-md-6 transactionTotals">
-                                <h4 className="transactionFood"> Spent on Food: ${foodSum}</h4>
-                                <h4 className="transactionTransportation"> Spent on Transportation: ${transportationSum}</h4>
-                                <h4 className="transactionLifestyle"> Spent on Lifestyle: ${lifestyleSum}</h4>
-                                <h4 className="transactionHousing"> Spent on Housing: ${housingSum}</h4>
-                                <h4 className="transactionDebt"> Spent on Debts: ${debtSum}</h4>
-                                <h4 className="transactionInsurance"> Spent on Insurance: ${insuranceSum}</h4>
-                                <h4 className="transactionSavings"> Spent on Savings: ${savingsSum}</h4>
+                                <h4 className="transactionFood"> Spent on Food: ${foodCurrency}</h4>
+                                <h4 className="transactionTransportation"> Spent on Transportation: ${transportationCurrency}</h4>
+                                <h4 className="transactionLifestyle"> Spent on Lifestyle: ${lifestyleCurrency}</h4>
+                                <h4 className="transactionHousing"> Spent on Housing: ${housingCurrency}</h4>
+                                <h4 className="transactionDebt"> Spent on Debts: ${debtCurrency}</h4>
+                                <h4 className="transactionInsurance"> Spent on Insurance: ${insuranceCurrency}</h4>
+                                <h4 className="transactionSavings"> Spent on Savings: ${savingsCurrency}</h4>
                                 {/* <h4> {budgets}</h4> */}
                             </Col>
                         </Row>

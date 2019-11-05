@@ -19,7 +19,7 @@ export function Current(props) {
 export function PostButton(props) {
     return (
         <button type="submit" 
-        className="ui primary horizontal animated button" tabindex = "0"
+        className="ui violet vertical animated button" tabindex = "0"
         onClick={(event) => props.handleCurrentBudgetSubmit(event)}>
               <div className = "visible content">Submit</div>
               <div className = "hidden content">

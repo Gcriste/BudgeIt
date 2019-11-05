@@ -35,11 +35,11 @@ export function PostButton(props) {
        
         
 <button 
-className="ui violet vertical animated button" tabindex ="0"
+className="ui violet vertical animated button" tabIndex ="0"
 onClick={(event) => props.handlePostSubmit(event)}>
    <div className = "visible content">Enter Transaction </div>
       <div className = "hidden content">
-            Yo
+            Submit
           </div>  
 </button>
 

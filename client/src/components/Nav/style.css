@@ -7,6 +7,9 @@
   background:white;
 }
 
+.nav-link, .header{
+  color:grey;
+}
 /* .navbar-nav{
     text-align:center;
 } */
