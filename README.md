@@ -1,4 +1,4 @@
-# react template
+# BudgeIt
 
 ### A budgetting app created in reactjs
 
