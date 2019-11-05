@@ -133,7 +133,7 @@ class Budget extends Component {
                           </div> 
                           <div className= "col-md-6"></div>
                         <div className= "col-md-2">  
-                     <button className = "ui orange animated button" tabindex ="0"
+                     <button className = "ui orange animated button" tabIndex ="0"
                      onClick = { this.handleLogout}> 
                      <div className = "visible content">Logout</div>
                       <div className = "hidden content">
