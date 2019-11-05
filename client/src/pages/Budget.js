@@ -126,16 +126,10 @@ class Budget extends Component {
             <div className = "profile">
                    <div className = "row">
                      <div className = "col-md-4">
-                     <h1> <strong> Welcome {user.firstname}</strong></h1>
-                         {' '}
+                   
                      <h3> <strong> Current Monthly Income ${user.currentbudget}</strong></h3>
                          {' '}
-                     
-                     
-                     <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
-                         {' '}
-                     {/* <p> <strong> Last Updated: <Moment date={user.updatedAt} format="MM/DD/YYYY" /></strong></p>
-                         {' '} */}
+                  
                           </div> 
                           <div className= "col-md-6"></div>
                         <div className= "col-md-2">  

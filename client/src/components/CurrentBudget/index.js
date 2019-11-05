@@ -3,7 +3,7 @@ import React from 'react'
 export function Current(props) {
     return (
         <div>
-        <h2> Enter your monthly income </h2>
+        <h3> Monthly Income </h3>
         <div>
         <div className="form-group">
         <input className="form-control" {...props} />
