@@ -131,7 +131,6 @@ handlePostChange = event => {
     API.postTransaction(newTransaction)
     .then(this.setState({ 
       redirect:true,
-     //  message: alert("Your posted a gig! on " + this.state.date) 
      })
       )
     .catch(err => console.log(err));
@@ -152,7 +151,7 @@ handlePostChange = event => {
     const {redirect, user, date} = this.state;
 
     if(redirect){
-        return <Redirect to="/transaction" />
+        return <Redirect to="/totalbudget" />
     }
   
       return (
