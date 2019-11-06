@@ -285,9 +285,10 @@ class TotalBudget extends Component {
                      <h1> Money Budgetted</h1>
                    <p> <strong> Budget for Food: ${food} </strong></p>
                          {' '}
-                         <div className={`four wide required field ${underBudget.food ? overBudget : ''}`}>
+                         <div className={`four wide required field ${underBudget.food ? 'underBudget' : 'overBudget'}`}>
                     
                         {underBudget.food && <div style = {styles.underBudget}>{underBudget.food}</div>}
+                        {overBudget.food && <div style = {styles.overBudget}>{overBudget.food}</div>}
                         </div>
 
                          <p> <strong> Budget for Transportation: ${transportation}  </strong></p>
