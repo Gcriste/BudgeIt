@@ -148,53 +148,91 @@ class TotalBudget extends Component {
     })
 
 
+ 
+
+    let foodSum = foodArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+    let transportationSum = transportationArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+    let lifestyleSum = lifestyleArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+    let housingSum = housingArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+    let debtSum = debtArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+    let insuranceSum = insuranceArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+    let savingsSum = savingsArray.reduce(function(prev, current) {
+      return prev + +current.amount
+    }, 0);
+
+
+
     let underBudget = {}
     let overBudget = {}
-
-    if (foodArray[0].amount < this.state.food){
-      underBudget.food = "Under Budget in food"
+    if (foodSum < this.state.food){
+      underBudget.food = "Under Budget"
       this.setState({underBudget})
     }
     else{
-      overBudget.food = "Over Budget in food!"
+      overBudget.food = "Over Budget!"
       this.setState({overBudget})
     }
-    // if (transportationArray[0].amount < this.state.transportation){
-    //   console.log('hi')
-    // }
-    // else{
-    //   console.log('bye')
-    // }
-    // if (lifestyleArray[0].amount < this.state.lifestyle){
-    //   console.log('hi')
-    // }
-    // else{
-    //   console.log('bye')
-    // }
-    // if (housingArray[0].amount < this.state.housing){
-    //   console.log('hi')
-    // }
-    // else{
-    //   console.log('bye')
-    // }
-    // if (debtArray[0].amount < this.state.debt){
-    //   console.log('hi')
-    // }
-    // else{
-    //   console.log('bye')
-    // }
-    // if (insuranceArray[0].amount < this.state.insurance){
-    //   console.log('hi')
-    // }
-    // else{
-    //   console.log('bye')
-    // }
-    // if (savingsArray[0].amount < this.state.savings){
-    //   console.log('hi')
-    // }
-    // else{
-    //   console.log('bye')
-    // }
+
+    if (transportationSum < this.state.transportation){
+      underBudget.transportation = "Under Budget"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.transportation= "Over Budget!"
+      this.setState({overBudget})
+    }
+    if (lifestyleSum < this.state.lifestyle){
+      underBudget.lifestyle= "Under Budget"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.lifestyle= "Over Budget!"
+      this.setState({overBudget})
+    }
+    if (housingSum < this.state.housing){
+      underBudget.housing = "Under Budget"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.housing= "Over Budget!"
+      this.setState({overBudget})
+    }
+    if (debtSum < this.state.debt){
+      underBudget.debt = "Under Budget"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.debt= "Over Budget!"
+      this.setState({overBudget})
+    }
+    if (insuranceSum < this.state.insurance){
+      underBudget.insurance = "Under Budget"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.insurance= "Over Budget!"
+      this.setState({overBudget})
+    }
+    if (savingsSum < this.state.savings){
+      underBudget.savings = "Under Budget"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.savings= "Over Budget!"
+      this.setState({overBudget})
+    }
 
 
     // console.log(this.state.food)
@@ -217,9 +255,6 @@ class TotalBudget extends Component {
       insuranceArray:insuranceArray,
       savingsArray:savingsArray,
       error: "" })
- 
-
-  
 
 
 
@@ -282,25 +317,63 @@ class TotalBudget extends Component {
                       <div className="article">
              
                
-                     <h1> Money Budgetted</h1>
-                   <p> <strong> Budget for Food: ${food} </strong></p>
-                         {' '}
-                         <div className={`four wide required field ${underBudget.food ? 'underBudget' : 'overBudget'}`}>
-                    
+                        <h1> Money Budgetted</h1>
+
+
+                        <div className={`four wide required field ${underBudget.food ? 'underBudget' : 'overBudget'}`}>
                         {underBudget.food && <div style = {styles.underBudget}>{underBudget.food}</div>}
                         {overBudget.food && <div style = {styles.overBudget}>{overBudget.food}</div>}
                         </div>
+                        <p> <strong> Budget for Food: ${food} </strong></p>
+                         {' '}
+                      
 
+                         <div className={`four wide required field ${underBudget.transportation ? 'underBudget' : 'overBudget'}`}>
+                        {underBudget.transportation && <div style = {styles.underBudget}>{underBudget.transportation}</div>}
+                        {overBudget.transportation && <div style = {styles.overBudget}>{overBudget.transportation}</div>}
+                        </div>
                          <p> <strong> Budget for Transportation: ${transportation}  </strong></p>
                          {' '}
+
+
+                         <div className={`four wide required field ${underBudget.lifestyle ? 'underBudget' : 'overBudget'}`}>
+                        {underBudget.lifestyle && <div style = {styles.underBudget}>{underBudget.lifestyle}</div>}
+                        {overBudget.lifestyle && <div style = {styles.overBudget}>{overBudget.lifestyle}</div>}
+                        </div>
                          <p> <strong> Budget for Lifestyle: ${lifestyle} </strong></p>
                          {' '}
+
+
+                         <div className={`four wide required field ${underBudget.housing ? 'underBudget' : 'overBudget'}`}>      
+                        {underBudget.housing && <div style = {styles.underBudget}>{underBudget.housing}</div>}
+                        {overBudget.housing && <div style = {styles.overBudget}>{overBudget.housing}</div>}
+                        </div>
                          <p> <strong>  Budget for Housing: ${housing} </strong></p>
                          {' '}
+
+
+                         <div className={`four wide required field ${underBudget.debt ? 'underBudget' : 'overBudget'}`}>                   
+                        {underBudget.debt && <div style = {styles.underBudget}>{underBudget.debt}</div>}
+                        {overBudget.debt && <div style = {styles.overBudget}>{overBudget.debt}</div>}
+                        </div>
                          <p> <strong>  Budget for Debt: ${debt} </strong></p>
                          {' '}
+
+
+                         <div className={`four wide required field ${underBudget.insurance ? 'underBudget' : 'overBudget'}`}>
+                        {underBudget.insurance && <div style = {styles.underBudget}>{underBudget.insurance}</div>}
+                        {overBudget.insurance && <div style = {styles.overBudget}>{overBudget.insurance}</div>}
+                        </div>
                          <p> <strong>  Budget for Insurance: ${insurance} </strong></p>
                          {' '}
+
+
+
+                         <div className={`four wide required field ${underBudget.savings ? 'underBudget' : 'overBudget'}`}>
+                    
+                        {underBudget.savings && <div style = {styles.underBudget}>{underBudget.savings}</div>}
+                        {overBudget.savings && <div style = {styles.overBudget}>{overBudget.savings}</div>}
+                        </div>
                          <p> <strong>  Budget for Savings: ${savings} </strong></p>
                          {' '}
 
