@@ -17,7 +17,7 @@ return (
             <div className="article">
                 <h1>All Transactions</h1>
                 {transactionsSorted.map(transaction => { 
-                    
+
                      let transactionCurrency = numeral(transaction.amount).format('0,0[.]00');
 
                     return (
@@ -32,7 +32,16 @@ return (
                                 <h2 className="transactionamount">You bought {transaction.description} on  <Moment date={transaction.date} format="MM/DD/YYYY"/></h2>
                                 <h2 className="transactionVenue">in the category: {transaction.category} for ${transactionCurrency}</h2>
                               
-                               
+                                <button 
+                                className="ui red vertical animated button" tabindex ="0"
+                                id={transaction.id} 
+                                onClick={() => props.handleDeleteButton(transaction.id)}>
+
+                                <div className = "visible content">Delete Transaction </div>
+                                <div className = "hidden content">
+                                 DELETE
+                                  </div>  
+              </button>
                             </Col>
                         </Row>
 

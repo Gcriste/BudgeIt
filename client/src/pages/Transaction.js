@@ -71,7 +71,7 @@ class Transaction extends Component {
     results = results.map(result => {
         //store each gig information in a new object 
         result = {
-            id: result.id,
+            id: result._id,
             amount: result.amount,
             budgetid: result.budgetid,
             category: result.category,
@@ -138,7 +138,11 @@ handlePostChange = event => {
    }
 
 
-
+   handleDeleteButton = id => {
+    API.deleteTransaction(id)
+        .then(res => this.componentDidMount())
+        .catch(err => console.log(err))
+}
 
 
   render() {
@@ -204,7 +208,8 @@ handlePostChange = event => {
 
                     </div>
                     <div className = "col-md-6">
-                    <PrintTransaction   transactions ={this.state.transactions} />
+                    <PrintTransaction   transactions ={this.state.transactions}
+                     handleDeleteButton={this.handleDeleteButton} />
                     </div>
                     
                   <div className = "col-md-2">
