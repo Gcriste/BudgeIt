@@ -11,7 +11,13 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import PrintTransaction from "../components/PrintTransactions";
 import TotalTransaction from '../components/TotalTransaction';
 
-
+const styles = {
+  error:{
+    color:'red',
+    fontSize: '0.7rem',
+    margin:0
+  }
+}
 
 class TotalBudget extends Component {
 
@@ -41,7 +47,9 @@ class TotalBudget extends Component {
       housingArray:[],
       debtArray:[],
       insuranceArray:[],
-      savingsArray:[]
+      savingsArray:[],
+      underBudget:{},
+      overBudget:{}
 
     };
     }
@@ -139,13 +147,64 @@ class TotalBudget extends Component {
         return result;
     })
 
-     console.log(foodArray)
-     console.log(transportationArray)
-     console.log(lifestyleArray)
-     console.log(housingArray) 
-     console.log(debtArray)
-     console.log(insuranceArray)
-     console.log(savingsArray)
+
+    let underBudget = {}
+    let overBudget = {}
+
+    if (foodArray[0].amount < this.state.food){
+      underBudget.food = "Under Budget in food"
+      this.setState({underBudget})
+    }
+    else{
+      overBudget.food = "Over Budget in food!"
+      this.setState({overBudget})
+    }
+    // if (transportationArray[0].amount < this.state.transportation){
+    //   console.log('hi')
+    // }
+    // else{
+    //   console.log('bye')
+    // }
+    // if (lifestyleArray[0].amount < this.state.lifestyle){
+    //   console.log('hi')
+    // }
+    // else{
+    //   console.log('bye')
+    // }
+    // if (housingArray[0].amount < this.state.housing){
+    //   console.log('hi')
+    // }
+    // else{
+    //   console.log('bye')
+    // }
+    // if (debtArray[0].amount < this.state.debt){
+    //   console.log('hi')
+    // }
+    // else{
+    //   console.log('bye')
+    // }
+    // if (insuranceArray[0].amount < this.state.insurance){
+    //   console.log('hi')
+    // }
+    // else{
+    //   console.log('bye')
+    // }
+    // if (savingsArray[0].amount < this.state.savings){
+    //   console.log('hi')
+    // }
+    // else{
+    //   console.log('bye')
+    // }
+
+
+    // console.log(this.state.food)
+    //  console.log(foodArray)
+    //  console.log(transportationArray)
+    //  console.log(lifestyleArray)
+    //  console.log(housingArray) 
+    //  console.log(debtArray)
+    //  console.log(insuranceArray)
+    //  console.log(savingsArray)
 
 
     this.setState({ 
@@ -160,7 +219,7 @@ class TotalBudget extends Component {
       error: "" })
  
 
-
+  
 
 
 
@@ -171,7 +230,7 @@ class TotalBudget extends Component {
   }
 
 
-  
+ 
   
 
 
@@ -182,7 +241,7 @@ class TotalBudget extends Component {
     
 
 
-    const {redirect, user, food, transportation, lifestyle, housing, savings, debt, insurance, foodArray, transportationArray, lifestyleArray, housingArray, debtArray, insuranceArray, savingsArray} = this.state;
+    const {redirect, user, food, transportation, lifestyle, housing, savings, debt, insurance, foodArray, transportationArray, lifestyleArray, housingArray, debtArray, insuranceArray, savingsArray, overBudget, underBudget} = this.state;
 
     if(redirect){
         return <Redirect to="/transaction" />
@@ -212,9 +271,11 @@ class TotalBudget extends Component {
                     budgets = {this.state.budgets}
                     />
                          
+                        
                     </div>
 
                    <div className = "col-md-5">
+                
                    <br></br><br></br><br></br>
                    <div className="card">
                      <div className="card-body player">
@@ -224,7 +285,12 @@ class TotalBudget extends Component {
                      <h1> Money Budgetted</h1>
                    <p> <strong> Budget for Food: ${food} </strong></p>
                          {' '}
-                         <p> <strong> Budget for Transportation: ${transportation} </strong></p>
+                         <div className={`four wide required field ${underBudget.food ? overBudget : ''}`}>
+                    
+                        {underBudget.food && <div style = {styles.underBudget}>{underBudget.food}</div>}
+                        </div>
+
+                         <p> <strong> Budget for Transportation: ${transportation}  </strong></p>
                          {' '}
                          <p> <strong> Budget for Lifestyle: ${lifestyle} </strong></p>
                          {' '}
