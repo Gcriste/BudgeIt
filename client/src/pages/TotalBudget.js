@@ -82,7 +82,7 @@ class TotalBudget extends Component {
     API.getBudgetByUser(userId)
   .then(response => {
   
-  console.log(response.data)
+ 
     this.setState({
       budgets:response.data,
       food:response.data[0].budgets[0].food,
