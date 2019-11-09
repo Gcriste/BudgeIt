@@ -108,7 +108,7 @@ class TotalBudget extends Component {
   API.getTransactionByUser(userId)
   .then(res => {
     let results = res.data
-    console.log(res.data)
+   
     // map through the array of transactions
     results = results.map(result => {
         //store each gig information in a new object 
