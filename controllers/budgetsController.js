@@ -23,35 +23,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    // const {food, transportation, lifestyle, housing, debt, insurance, savings, userid } = req.body
-    // const budgets = {};
-    //   if(food) budgets.food = food;
-    //   if(transportation) budgets.transportation = transportation;
-    //   if(lifestyle) budgets.lifestyle = lifestyle;
-    //   if(housing) budgets.housing = housing;
-    //   if(debt) budgets.debt = debt;
-    //   if(insurance) budgets.insurance = insurance;
-    //   if(savings) budgets.savings = savings;
-    //   if(userid) budgets.userid = userid;
     db.Budget
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-//   create: function(req, res) {
-//     db.User
-//     .findOne(req.body.email)
-//     .then(() => {
-//         db.Budget
-//       const  newBudget = {
-//           category,
-//           userid:req.user.id
-//       }
-//         .create(newBudget)
-//         .then(dbModel => res.json(dbModel))
-//     })
-//       .catch(err => res.status(422).json(err));
-//   },
   update: function(req, res) {
       db.Budget
       .findOneAndUpdate({userid: req.params.userid },  {$set: {budgets:req.body}}, { new: true, upsert: true })
