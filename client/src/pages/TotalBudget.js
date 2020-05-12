@@ -49,7 +49,8 @@ class TotalBudget extends Component {
       insuranceArray:[],
       savingsArray:[],
       underBudget:{},
-      overBudget:{}
+      overBudget:{},
+      budgets:[{}]
 
     };
     }
@@ -303,7 +304,7 @@ class TotalBudget extends Component {
                     debtArray ={debtArray}
                     insuranceArray ={insuranceArray}
                     savingsArray ={savingsArray}
-                    budgets = {this.state.budgets}
+                    budgets = {this.state.budgets[0].budgets}
                     />
                          
                         
