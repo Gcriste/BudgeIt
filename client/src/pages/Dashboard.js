@@ -55,7 +55,7 @@ class Dashboard extends Component {
 
     API.getBudgetByUser(userId)
   .then(response => {
-  
+
   console.log(response.data)
     this.setState({
       budgets:response.data,
@@ -67,6 +67,7 @@ class Dashboard extends Component {
       insurance:response.data[0].budgets[5].insurance,
       savings:response.data[0].budgets[6].savings
     })
+  
   })
 
 
