@@ -101,14 +101,42 @@ class Dashboard extends Component {
 
     if(!user.currentbudget){
       return (
-      
-      <Link to={"/currentbudget/"} className="ui primary animated button" tabindex="0" >   
-      <h3>No budgets entered yet!</h3>
+     <Container>
+        <div className="card">
+          <div className="row">
+            <div className="col-md-4">
+            <div style={{textAlign:"left"}}>
+        <h1> <strong> Welcome {user.firstname}</strong></h1>
+              {' '}
+              </div>
+              </div>
+              <div className="col-md-4"></div>
+              <div className="col-md-4">
+              <div style={{textAlign:"right"}}>
+                <button className = "ui orange animated button" tabindex ="0" onClick = { this.handleLogout}> 
+                    <div className = "visible content">Logout</div>
+                    <div className = "hidden content">
+                    <i className = "right arrow icon"></i>
+                  </div> 
+              </button>
+            </div>
+            </div>
+        </div>
+          <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
+              {' '}
+            
+          <h3 className="text-center">No budgets entered yet!</h3>
+        <Link to={"/currentbudget/"} className="ui primary animated button" tabindex="0" >   
+     
       <div className = "visible content">Enter Monthly Budget </div>
       <div className = "hidden content">
           <i className = "right arrow icon"></i>
       </div>   
       </Link>
+    
+        </div>
+        </Container>
+  
 )
       
     }
