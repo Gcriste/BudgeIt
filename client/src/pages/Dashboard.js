@@ -56,9 +56,7 @@ class Dashboard extends Component {
 
     API.getBudgetByUser(userId)
   .then(response => {
-
-  
-    if(response.data.budgets){
+    if(response.data.length != 0){
     this.setState({
       budgets:response.data,
       food:response.data[0].budgets[0].food,

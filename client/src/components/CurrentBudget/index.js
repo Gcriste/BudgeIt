@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 export function Current(props) {
     return (
@@ -18,6 +19,7 @@ export function Current(props) {
 
 export function PostButton(props) {
     return (
+       
         <button type="submit" 
         className="ui violet vertical animated button" tabindex = "0"
         onClick={(event) => props.handleCurrentBudgetSubmit(event)}>
@@ -26,6 +28,7 @@ export function PostButton(props) {
               <i className = "right arrow icon"></i>
               </div> 
           </button>
+        
     )
 }
 

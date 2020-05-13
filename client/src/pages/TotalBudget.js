@@ -21,6 +21,7 @@ const styles = {
 
 class TotalBudget extends Component {
 
+
     constructor(props) {
         super(props);
         // this.handleDayChange = this.handleDayChange.bind(this);
@@ -28,7 +29,6 @@ class TotalBudget extends Component {
   this.state = {
       userid:"",
       user:{},
-      // budgets:{},
       food:"",
       transportation:"",
       lifestyle:"",
@@ -82,7 +82,6 @@ class TotalBudget extends Component {
 
     API.getBudgetByUser(userId)
   .then(response => {
-  
  
     this.setState({
       budgets:response.data,

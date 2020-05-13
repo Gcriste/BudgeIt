@@ -11,6 +11,7 @@ import {Current , PostButton } from '../components/CurrentBudget';
 
 
 
+
 class CurrentBudget extends Component {
   
 
@@ -97,10 +98,11 @@ class CurrentBudget extends Component {
        axios.put('/api/users/' + response.data._id, newBudget)
        .then(this.setState({
            currentbudget:this.state.currentbudget,
-           redirect:true,
+           redirect:true
          })
        
        )
+
     
     
   
@@ -110,6 +112,8 @@ class CurrentBudget extends Component {
       })
     });
     })
+
+
    }
 
 
@@ -159,9 +163,12 @@ class CurrentBudget extends Component {
                    </button>
                    </div>
                    </div>
+                
                    <PostButton 
                     handleCurrentBudgetSubmit={this.handleCurrentBudgetSubmit}>
+                      
                   </PostButton>
+                 
                 </div>
                 </div>
 
