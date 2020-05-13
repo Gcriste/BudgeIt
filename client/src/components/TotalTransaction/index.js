@@ -36,9 +36,7 @@ const TotalTransaction = props => {
       let insuranceCurrency = numeral(insuranceSum).format('0,0[.]00');
       let savingsCurrency = numeral(savingsSum).format('0,0[.]00');
 
-      // let foodTotal = props.budgets.reduce(function(prev, current) {
-      //   return prev + +current.food
-      // }, 0);
+      // let foodTotal = props.budgets[0].food
     //  {props.budgets.map(budget => {
 
 return (
@@ -57,7 +55,7 @@ return (
                                 <h4 className="transactionDebt"> Spent on Debts: ${debtCurrency}</h4>
                                 <h4 className="transactionInsurance"> Spent on Insurance: ${insuranceCurrency}</h4>
                                 <h4 className="transactionSavings"> Spent on Savings: ${savingsCurrency}</h4>
-                                {/* <h4> {budgets}</h4> */}
+                                {/* <h4> {budgets[0].budgets.food}</h4> */}
                             </Col>
                         </Row>
 

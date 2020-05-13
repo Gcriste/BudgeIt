@@ -6,6 +6,7 @@ import setAuthToken from "../utils/setAuthToken";
 import {Redirect } from "react-router-dom";
 import Moment from 'react-moment';
 import Dash from '../components/Dashboard';
+import {Link} from 'react-router-dom';
 
 
 
@@ -56,7 +57,8 @@ class Dashboard extends Component {
     API.getBudgetByUser(userId)
   .then(response => {
 
-  console.log(response.data)
+  
+    if(response.data.budgets){
     this.setState({
       budgets:response.data,
       food:response.data[0].budgets[0].food,
@@ -67,7 +69,19 @@ class Dashboard extends Component {
       insurance:response.data[0].budgets[5].insurance,
       savings:response.data[0].budgets[6].savings
     })
-  
+    }
+    else{
+      this.setState({
+        budgets:{},
+        food:"",
+        transportation:"",
+        lifestyle:"",
+        housing:"",
+        debt:"",
+        insurance:"",
+        savings:""
+      })
+    }
   })
 
 
@@ -86,7 +100,22 @@ class Dashboard extends Component {
     if(redirect){
         return <Redirect to="/" />
     }
+
+    if(!user.currentbudget){
+      return (
+      
+      <Link to={"/currentbudget/"} className="ui primary animated button" tabindex="0" >   
+      <h3>No budgets entered yet!</h3>
+      <div className = "visible content">Enter Monthly Budget </div>
+      <div className = "hidden content">
+          <i className = "right arrow icon"></i>
+      </div>   
+      </Link>
+)
+      
+    }
   
+    else{
       return (
         <Container>
   
@@ -163,6 +192,7 @@ class Dashboard extends Component {
                      </Container>
        
       )
+    }
   }
 }
 

@@ -28,7 +28,7 @@ class TotalBudget extends Component {
   this.state = {
       userid:"",
       user:{},
-      budgets:{},
+      // budgets:{},
       food:"",
       transportation:"",
       lifestyle:"",
