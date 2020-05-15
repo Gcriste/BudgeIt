@@ -66,21 +66,7 @@ class TotalBudget extends Component {
 
   componentDidMount() {
 
-    if (this.state.budgetid=="" ){
-      this.setState({
-        budgets:[{}],
-        food:"",
-        transportation:"",
-        lifestyle:"",
-        housing:"",
-        debt:"",
-        insurance:"",
-        savings:"",
-        budgetid:""
-      })
-    }
-
-    else{
+  
     const token = localStorage.getItem('example-app');
     if(token){
         setAuthToken(token);
@@ -97,6 +83,21 @@ class TotalBudget extends Component {
 
     API.getBudgetByUser(userId)
   .then(response => {
+    console.log(response.data)
+      if (response.data.length==0 ){
+      this.setState({
+        food:"",
+        transportation:"",
+        lifestyle:"",
+        housing:"",
+        debt:"",
+        insurance:"",
+        savings:"",
+        budgetid:""
+      })
+    }
+
+    else{
  
     this.setState({
       budgets:response.data,
@@ -109,7 +110,7 @@ class TotalBudget extends Component {
       savings:response.data[0].budgets[6].savings,
       budgetid:response.data[0]._id
     })
-  })
+  
 
   let foodArray = [];
   let transportationArray =[];
@@ -264,11 +265,12 @@ class TotalBudget extends Component {
 
   )
 
+  }
+
   })
-
+})
   }
-
-  }
+  
  
   
 
