@@ -10,6 +10,7 @@ import {Category, Input, PostButton } from '../components/Transaction';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import PrintTransaction from "../components/PrintTransactions";
 import TotalTransaction from '../components/TotalTransaction';
+import {Link} from 'react-router-dom';
 
 const styles = {
   error:{
@@ -65,7 +66,21 @@ class TotalBudget extends Component {
 
   componentDidMount() {
 
+    if (this.state.budgetid=="" ){
+      this.setState({
+        budgets:[{}],
+        food:"",
+        transportation:"",
+        lifestyle:"",
+        housing:"",
+        debt:"",
+        insurance:"",
+        savings:"",
+        budgetid:""
+      })
+    }
 
+    else{
     const token = localStorage.getItem('example-app');
     if(token){
         setAuthToken(token);
@@ -234,17 +249,6 @@ class TotalBudget extends Component {
       this.setState({overBudget})
     }
 
-
-    // console.log(this.state.food)
-    //  console.log(foodArray)
-    //  console.log(transportationArray)
-    //  console.log(lifestyleArray)
-    //  console.log(housingArray) 
-    //  console.log(debtArray)
-    //  console.log(insuranceArray)
-    //  console.log(savingsArray)
-
-
     this.setState({ 
       transactions: results, 
       foodArray:foodArray,
@@ -256,15 +260,15 @@ class TotalBudget extends Component {
       savingsArray:savingsArray,
       error: "" })
 
+    }
 
-
-  })
+  )
 
   })
 
   }
 
-
+  }
  
   
 
@@ -282,6 +286,46 @@ class TotalBudget extends Component {
         return <Redirect to="/transaction" />
     }
   
+    if(this.state.budgetid==""  ){
+      return(
+        <Container>
+        <div className="card">
+          <div className="row">
+            <div className="col-md-4">
+            <div style={{textAlign:"left"}}>
+        <h1> <strong> Welcome {user.firstname}</strong></h1>
+              {' '}
+              </div>
+              </div>
+              <div className="col-md-4"></div>
+              <div className="col-md-4">
+              <div style={{textAlign:"right"}}>
+                <button className = "ui orange animated button" tabindex ="0" onClick = { this.handleLogout}> 
+                    <div className = "visible content">Logout</div>
+                    <div className = "hidden content">
+                    <i className = "right arrow icon"></i>
+                  </div> 
+              </button>
+            </div>
+            </div>
+        </div>
+          <h3> <strong> Member since: <Moment date={user.createdAt} format="MM/DD/YYYY" /></strong></h3>
+              {' '}
+            
+          <h3 className="text-center">No budgets entered yet!</h3>
+        <Link to={"/currentbudget/"} className="ui primary animated button" tabindex="0" >   
+     
+      <div className = "visible content">Enter Monthly Budget </div>
+      <div className = "hidden content">
+          <i className = "right arrow icon"></i>
+      </div>   
+      </Link>
+    
+        </div>
+        </Container>
+      )
+    }
+  else {
       return (
         <Container>
   
@@ -303,7 +347,7 @@ class TotalBudget extends Component {
                     debtArray ={debtArray}
                     insuranceArray ={insuranceArray}
                     savingsArray ={savingsArray}
-                    budgets = {this.state.budgets[0].budgets}
+                    budgets = {this.state.budgets}
                     />
                          
                         
@@ -405,7 +449,8 @@ class TotalBudget extends Component {
       
       )
   }
-
+  }
+  
 }
 
 export default TotalBudget;

@@ -123,7 +123,7 @@ class CurrentBudget extends Component {
 
 
     const {redirect, user} = this.state;
-
+   
     if(redirect){
         return <Redirect to="/dashboard" />
     }
